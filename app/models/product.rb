@@ -10,8 +10,7 @@ class Product < ApplicationRecord
       category_id: category_id,      
       bank_id: bank_id,
       url: url,
-      info: info,
-      total: total,
+      info: info,      
       status: status      
     }    
   end

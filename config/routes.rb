@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
 
+  get "/products" => "products#index"
   get "/products/:id" => "products#show"
   post "/products" => "products#create"
   patch "/products/:id" => "products#update"
   delete "/products/:id" => "products#destroy"
 
-  get "/reviews" => "reviews#index"  
+  get "/reviews" => "reviews#index"
+  get "/reviews/:id" => "reviews#show"  
   post "/reviews" => "reviews#create"
   patch "/reviews/:id" => "reviews#update"
   delete "/reviews/:id" => "reviews#destroy"
 
+  get "/users" => "users#index"
   get "/users/:id" => "users#show"
   post "/users" => "users#create"
   patch "/users/:id" => "users#update"

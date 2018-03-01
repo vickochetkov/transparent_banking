@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :reviews
 
   def full_name
-    "#{first_name} #{middle_name} #{last_name}"
+    "#{first_name} #{second_name} #{last_name}"
   end
 
   def as_json

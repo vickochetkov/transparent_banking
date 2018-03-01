@@ -6,6 +6,6 @@ class Category < ApplicationRecord
       id: id,
       title: title      
     }    
-  end
+  end  
 
 end
