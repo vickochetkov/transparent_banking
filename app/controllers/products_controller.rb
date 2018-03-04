@@ -3,6 +3,11 @@ class ProductsController < ApplicationController
   def index
     products = Product.all#.bank(id: :asc)    
     render json: products.as_json
+
+    search_t = params[:search]
+      if search_t
+        products = products.where("name LIKE ?", "%#{search_t}")
+    end
   end
 
   def show
