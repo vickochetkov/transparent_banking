@@ -1,11 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
-    products = Product.all.bank(id: :asc)
-    # search_t = params[:search]
-    # if search_t 
-    #   products = products.where("name LIKE ?", "%#{search_t}%")
-    # end        
+    products = Product.all#.bank(id: :asc)    
     render json: products.as_json
   end
 
@@ -14,40 +10,43 @@ class ProductsController < ApplicationController
     render json: product.as_json    
   end
 
-  # def create    
-  #   product = Product.new(
-  #     name: params[:name],
-  #     price: params[:price],      
-  #     description: params[:description],
-  #     availability: params[:availability],
-  #     supplier_id: params[:supplier_id]
-  #     )
+  def create    
+    product = Product.new(
+      name: params[:name],
+      category_id: params[:category_id],      
+      bank_id: params[:bank_id],
+      url: params[:url],
+      info: params[:info],
+      status: params[:status]
+      )
 
-  #   if product.save
-  #     render json: product.as_json
-  #   else
-  #     render json: { errors: product.errors.full_messages}, status: 422 
-  #   end      
-  # end
+    if product.save
+      render json: product.as_json
+    else
+      render json: { errors: product.errors.full_messages}, status: 422 
+    end      
+  end
 
-  # def update
-  #   product = Product.find_by(id: params[:id])
-  #   if product.update(
-  #     name: params[:name] || product.name,
-  #     price: params[:price] || product.price,      
-  #     description: params[:description] || product.description,
-  #     availability: params[:availability] || product.availability
-  #     )
-  #     render json: product.as_json
-  #    else
-  #     render json: { errors: product.errors.full_messages}, status: 422
-  #    end       
-  # end
+  def update
+    product = Product.find_by(id: params[:id])
+    if product.update(
+      name: params[:name] || product.name,
+      category_id: params[:category_id] || product.category_id,      
+      bank_id: params[:bank_id] || product.bank_id,
+      url: params[:url] || product.url,
+      info: params[:info] || product.info,
+      status: params[:status] || product.status
+      )
+      render json: product.as_json
+     else
+      render json: { errors: product.errors.full_messages}, status: 422
+     end       
+  end
 
-  # def destroy
-  #   product = Product.find_by(id: params[:id])
-  #   product.destroy
-  #   render json: {message: "Item successfully deleted"}    
-  # end
+  def destroy
+    product = Product.find_by(id: params[:id])
+    product.destroy
+    render json: {message: "Product successfully deleted"}    
+  end
 
 end
