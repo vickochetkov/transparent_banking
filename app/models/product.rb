@@ -11,7 +11,8 @@ class Product < ApplicationRecord
       bank_id: bank_id,
       url: url,
       info: info,      
-      status: status      
+      status: status,
+      bank: bank.as_json,      
     }    
   end
 
