@@ -77,16 +77,16 @@
           <a v-bind:href="bank.url" target="_blank"><img class="small-img" :src="bank.brand_img_url" alt="Bank brand image"></a>
         </div>
         <div class="col-lg-4 inline-block">
-          <h4>1. <a :href="'/#/banks/' + bank.id" target="_blank">{{ bank.title }}</a></h4>                  
+          <h4>1. <a :href="'/#/banks/' + bank.id">{{ bank.title }}</a></h4>                  
         </div>
         <div class="col-lg-4">
           <div class="inline-block">          
             <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
-            <span>4.6</span>
+            <span> {{ bank.rating }}</span>
             <span class="ghost">|</span>            
             <span class="fa-layers fa-fw" style="font-size:4em; color:#007ee5">
                 <i class="far fa-comments"></i>
-                <span style="color:black" class="fa-layers-counter">1,728</span>
+                <span style="color:black" class="fa-layers-counter">{{ bank.review_count }}</span>
             </span>            
           </div>
         </div>
@@ -104,22 +104,24 @@
       
     <h2 class="text-center">{{ category.title }}</h2>
 
-      <div v-for="product in currentProducts" class="row">
-        <div class="col-lg-2">
-          <a v-bind:href="product.bank.url" target="_blank"><img class="small-img" :src="product.bank.brand_img_url" alt="Bank brand image"></a>             
+      <div v-for="product in category.products" class="row">
+        <div class="col-lg-2">          
+
+          <a v-bind:href="product.bank.bank_url" target="_blank"><img class="small-img" :src="product.bank.brand_img_url" alt="Bank brand image"></a>             
+          
         </div>
         <div class="col-lg-4 inline-block">
           <h4>1. <a :href="'/#/products/' + product.id">{{ product.name }}</a></h4>
-          <p><a :href="'/#/banks/' + product.bank_id">{{ product.bank.title }}</a></p>                  
+          <p><a :href="'/#/banks/' + product.bank.id">{{ product.bank.title }}</a></p>                  
         </div>
         <div class="col-lg-4">
           <div class="inline-block">          
             <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
-            <span>4.6</span>
+            <span>{{ product.rating }}</span>
             <span class="ghost">|</span>            
             <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
                 <i class="far fa-comments"></i>
-                <span style="color:black" class="fa-layers-counter">1,728</span>
+                <span style="color:black" class="fa-layers-counter">{{product.review_count}}</span>
             </span>            
           </div>
         </div>
@@ -142,27 +144,23 @@
     <h5 class="text-center"><a :href="'/#/banks/' + product.bank_id">{{ product.bank.title }}</a></h5>
       
       <div class="row">        
-        <div class="col-lg-4 inline-block">
+        <div class="col-lg-7 inline-block">
           <h4>Information:</h4>
           <p>{{ product.info }}</p>
         </div>
         <div class="col-lg-2">
           <div class="inline-block">          
             <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
-            <span>4.6</span>
+            <span>{{ product.avrg_stars }}</span>
             <span class="ghost">|</span>            
             <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
                 <i class="far fa-comments"></i>
-                <span style="color:black" class="fa-layers-counter">1,728</span>
-            </span>            
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <button type="button" class="btn btn-primary .btn-sm" style="font-size:0.6em">Leave your review <span class="badge badge-light">14</span>
+                <span style="color:black" class="fa-layers-counter">{{ product.review_count }}</span>
+            </span>
+            <button type="button" class="btn btn-primary .btn-sm" style="font-size:0.6em">Leave your review <span class="badge badge-light">14</span>
             <span class="sr-only">Total reviews</span>
-          </button>        
-        </div>
-        <div class="col-lg-1">
+          </button>              
+          </div>
         </div>
         <div class="col-lg-2">
           <a v-bind:href="product.bank.url" target="_blank"><img class="small-img" :src="product.bank.brand_img_url" alt="Bank brand image"></a>              
@@ -213,10 +211,10 @@
             <div><a :href="product_also1.bank.url" target="_blank"><img class="card-img-top" :src="product_also1.bank.brand_img_url" alt="Card image cap" style="width:50%"></a></div>
              <div>
               <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
-            <span>4.74</span>                        
+            <span>{{ product_also1.avrg_stars }}</span>                        
             <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
                 <i class="far fa-comments"></i>
-                <span style="color:black" class="fa-layers-counter">974</span>
+                <span style="color:black" class="fa-layers-counter">{{ product_also1.review_count }}</span>
             </span>            
              </div>
            </div>             
@@ -251,16 +249,16 @@
             <div><a :href="product_also2.bank.url" target="_blank"><img class="card-img-top" :src="product_also2.bank.brand_img_url" alt="Card image cap" style="width:50%"></a></div>
              <div>
               <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
-            <span>4.52</span>                        
+            <span>{{ product_also2.avrg_stars}}</span>                        
             <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
                 <i class="far fa-comments"></i>
-                <span style="color:black" class="fa-layers-counter">1263</span>
+                <span style="color:black" class="fa-layers-counter">{{ product_also2.review_count}}</span>
             </span>            
              </div>
            </div>             
             <div class="card-body">
               <h5 class="card-title text-center"><a :href="'/#/products/' + product_also2.id">{{ product_also2.name }}</a></h5>
-              <h5 class="text-center"><a :href="'/#/banks/' + product_also2.bank_id">{{ product_also1.bank.title }}</a></h5>              
+              <h5 class="text-center"><a :href="'/#/banks/' + product_also2.bank_id">{{ product_also2.bank.title }}</a></h5>              
             </div>
             <div class="card-footer">
               <small class="text-muted">
@@ -292,17 +290,246 @@
 
         <h4 class="text-center">Reviews:</h4>
 
+        <div v-for="review in product.reviews">
+
+          <div class="card also">
+            <div class="media">
+                <span class="media-left" style="font-size:1em; color:Gold">
+                    <i class="fas fa-user-circle"></i>
+                </span>
+                <div class="media-body" id="textbox">
+                    <span>                      
+                      <span> {{ review.user.first_name }} {{ review.user.last_name }}</span> 
+                      <span class="alignright">{{ review.created_at }}</span>
+                    </span>  
+                </div>
+                  <div style="clear: both;"></div>
+            </div>
+            <div class="media">
+                <span class="media-left" style="font-size:1em; color:Gold">
+                    <i class="fas fa-trophy"></i>
+                </span>
+                <div class="media-body" id="textbox">
+                  <span class="media-heading alignleft">{{ review.stars }}</span>
+                </div>
+                  <div style="clear: both;"></div>
+            </div>    
+            <div class="card-body">
+              <p> {{ review.text }}</p>
+            </div>            
+          </div>
+        </div>
+
     <br>
     <a href="/#/categories">Back to all categories</a>
 
   </div>
 </template>
 
+<template id="banks-show-page">
+  <div class="vue-component body-width">
+      
+    <h2 class="text-center">{{ bank.title }}</h2>    
+      
+      <div class="row">        
+        <div class="col-lg-6 inline-block">
+          <h4>Description:</h4>
+          <p>{{ bank.info }}</p>          
+        </div>
+        <div class="col-lg-3">
+          <div class="inline-block">          
+            <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
+            <span>{{ bank.rating }}</span>
+            <span class="ghost">|</span>            
+            <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
+                <i class="far fa-comments"></i>
+                <span style="color:black" class="fa-layers-counter">{{ bank.review_count }}</span>
+            </span>
+            <button type="button" class="btn btn-primary .btn-sm" style="font-size:0.6em">Leave your review <span class="badge badge-light">14</span>
+            <span class="sr-only">Total reviews</span>
+          </button>              
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <a v-bind:href="bank.url" target="_blank"><img class="small-img" :src="bank.brand_img_url" alt="Bank brand image"></a>              
+        </div>
+      </div>
+
+      <div class="row">        
+        <div class="col-lg-2 inline-block">
+          
+        </div>
+        <div class="col-lg-8 inline-block pros-cons">
+          <div class="inline-block">
+            <div>          
+              <span style="font-size:2em; color:Gold"><i class="far fa-smile"></i></span>             
+              <ul class="square">                   
+                <li>Created by an experienced developer in the field</li>
+                <li>Native experience and clean user interface</li>
+                <li>A native OS X app which is available through Mac App Store. The UI is fast, responsive and integrates seamlessly with the OS.</li>                             
+              </ul>
+            </div>
+            <div>
+              <span style="font-size:2em; color:Tomato"><i class="far fa-frown"></i></span>
+              <ul class="square">                   
+                <li>No multiple query tabs in the free trial version</li>
+                <li>Commercial</li>
+                <li>To be fair, multiple windows / tabs IS a feature. It's just part of the paid version.</li>
+              </ul>               
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 inline-block">
+        </div>
+      </div>
+      
+      <br>
+      <hr class="seprt">
+      <br>
+      
+      <h4 class="text-center">Products:</h4>
+      
+        <div class="card also">
+          <div class="media">
+            <div class="media-body" id="textbox">
+              <ul class="square" v-for="product in bank.products">
+                <li><a :href="'/#/products/' + product.id">{{ product.name }}</a></li>               
+              </ul>
+            </div>            
+          </div>
+        </div>
+
+      <br>
+      <hr class="seprt">
+      <br>
+      
+      <h4 class="text-center">See also:</h4>
+        <div class="card-deck also">
+          <div class="card">
+            <div class="container">
+            <div><a :href="bank_also1.url" target="_blank"><img class="card-img-top" :src="bank_also1.brand_img_url" alt="Card image cap" style="width:50%"></a></div>
+             <div>
+              <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
+            <span>{{ bank_also1.rating }}</span>                        
+            <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
+                <i class="far fa-comments"></i>
+                <span style="color:black" class="fa-layers-counter">{{ bank_also1.review_count }}</span>
+            </span>            
+             </div>
+           </div>             
+            <div class="card-body">
+              <h5 class="card-title text-center"><a :href="'/#/banks/' + bank_also1.id">{{ bank_also1.title }}</a></h5>                           
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <div class="inline-block">
+                  <span>          
+                    <span style="font-size:1.5em; color:Gold"><i class="far fa-smile"></i></span>
+                    <ul class="circle">
+                      <li>Created by an experienced developer in the field</li>     
+                    </ul>
+                  </span>
+                  <div>
+                    <span style="font-size:1.5em; color:Tomato"><i class="far fa-frown"></i></span>
+                    <ul class="circle">       
+                      <li>No multiple query tabs in the free trial version</li>       
+                    </ul>
+                     
+                  </div>      
+                </div>
+              </small>
+              
+            </div>
+          </div>
+          
+           <div class="card">
+            <div class="container">
+            <div><a :href="bank_also2.url" target="_blank"><img class="card-img-top" :src="bank_also2.brand_img_url" alt="Card image cap" style="width:50%"></a></div>
+             <div>
+              <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
+            <span>{{ bank_also2.rating }}</span>                        
+            <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
+                <i class="far fa-comments"></i>
+                <span style="color:black" class="fa-layers-counter">{{ bank_also2.review_count }}</span>
+            </span>            
+             </div>
+           </div>             
+            <div class="card-body">
+              <h5 class="card-title text-center"><a :href="'/#/banks/' + bank_also2.id">{{ bank_also2.title }}</a></h5>                            
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <div class="inline-block">
+                  <span>          
+                    <span style="font-size:1.5em; color:Gold"><i class="far fa-smile"></i></span>
+                    <ul class="circle">
+                      <li>Native experience and clean user interface</li>     
+                    </ul>
+                  </span>
+                  <div>
+                    <span style="font-size:1.5em; color:Tomato"><i class="far fa-frown"></i></span>
+                    <ul class="circle">       
+                      <li>To be fair, multiple windows / tabs IS a feature. It's just part of the paid version.</li>       
+                    </ul>
+                     
+                  </div>      
+                </div>
+              </small>
+              
+            </div>
+          </div>
+          
+        </div>  
+
+    <br>
+      <hr class="seprt">
+    <br>
+
+        <h4 class="text-center">Reviews:</h4>
+
+        <div v-for="review in bank.reviews">          
+          <div class="card also">
+            <div class="media">
+                <span class="media-left" style="font-size:1em; color:Gold">
+                    <i class="fas fa-user-circle"></i>
+                </span>
+                <div class="media-body" id="textbox">
+                    <span> 
+                      <span> {{ review.user.first_name }} {{ review.user.last_name }}</span> 
+                      <span class="alignright">{{ review.created_at }}</span>
+                    </span>  
+                </div>
+                  <div style="clear: both;"></div>
+            </div>
+            <div class="media">
+                <span class="media-left" style="font-size:1em; color:Gold">
+                    <i class="fas fa-trophy"></i>
+                </span>
+                <div class="media-body" id="textbox">
+                  <span class="media-heading alignleft">{{ review.stars }}</span>
+                </div>
+                  <div style="clear: both;"></div>
+            </div>    
+            <div class="card-body">
+              <p> {{ review.text }}</p>
+            </div>            
+          </div>
+        </div>
+
+    <br>
+    <a href="/#/banks">Back to all banks</a>
+
+  </div>
+</template>
+
 <template id="categories-index-page">
-  <div class="vue-component">
+  <div class="vue-component body-width">
       <div v-for="category in categories">
         <h5 class="text-center">{{ category.id }}.<a :href="'/#/categories/' + category.id">{{ category.title }}</a></h5>
       </div>
+    <br>
+    <a href="/#/">To the main page</a>
+    <br>  
   </div>
 </template>
 

@@ -11,7 +11,7 @@ body {
 
 .body-width {
   width: 1000px;
-  #min-height: 500px;
+  height: auto;
   margin: auto;
   border: 3px solid #28a745;
 
@@ -33,20 +33,23 @@ ul.square {
 
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-}
-
 div.also {
   width:900px;
   margin: auto;
 }
 
+.alignleft {
+  float: left;
+}
+
+.alignright {
+  float: right;
+}
+
 .inline-block {
   display: inline-block;
   width: 200px;
-  height: 100px;
+  height: auto;
   margin: 1em;
 }
 
@@ -73,6 +76,8 @@ p {
 
 .container {
     padding: 2px 16px;
+    display: flex;
+    justify-content: space-between;
 }
 
 img {
