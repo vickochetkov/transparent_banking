@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Transparent Banking</title>
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css"> 
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet" type="text/css"> 
   <link href="https://fonts.googleapis.com/css?family=Pirata+One" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="index.css">
@@ -33,13 +34,13 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="/#/signup">Signup</a>
+          <a class="dropdown-item" href="/#/login">Login</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="/#/logout">Logout</a>
         </div>
       </li>
       <li class="nav-item">
@@ -138,6 +139,265 @@
 </template>
 
 <template id="products-show-page">
+  <div class="vue-component body-width">
+      
+    <h2 class="text-center">{{ product.name }}</h2>
+    <h5 class="text-center"><a :href="'/#/banks/' + product.bank_id">{{ product.bank.title }}</a></h5>
+      
+      <div class="row">        
+        <div class="col-lg-7 inline-block">
+          <h4>Information:</h4>
+          <p>{{ product.info }}</p>
+        </div>
+        <div class="col-lg-2">
+          <div class="inline-block">          
+            <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
+            <span>{{ product.avrg_stars }}</span>
+            <span class="ghost">|</span>            
+            <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
+                <i class="far fa-comments"></i>
+                <span style="color:black" class="fa-layers-counter">{{ product.review_count }}</span>
+            </span>
+            <button type="button" class="btn btn-primary .btn-sm" style="font-size:0.6em">Leave your review <span class="badge badge-light">14</span>
+            <span class="sr-only">Total reviews</span>
+          </button>              
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <a v-bind:href="product.bank.url" target="_blank"><img class="small-img" :src="product.bank.brand_img_url" alt="Bank brand image"></a>              
+        </div>
+      </div>
+
+      <div class="row">        
+        <div class="col-lg-2 inline-block">
+          
+        </div>
+        <div class="col-lg-8 inline-block pros-cons">
+          <div class="inline-block">
+            <div>          
+              <span style="font-size:2em; color:Gold"><i class="far fa-smile"></i></span>             
+              <ul class="square">
+                   <!-- <li class="text-danger" v-for="error in errors">{{ error }}</li> -->
+                <li>Created by an experienced developer in the field</li>
+                <li>Native experience and clean user interface</li>
+                <li>A native OS X app which is available through Mac App Store. The UI is fast, responsive and integrates seamlessly with the OS.</li>                             
+              </ul>
+            </div>
+            <div>
+              <span style="font-size:2em; color:Tomato"><i class="far fa-frown"></i></span>
+              <ul class="square">
+                   <!-- <li class="text-danger" v-for="error in errors">{{ error }}</li> -->
+                <li>No multiple query tabs in the free trial version</li>
+                <li>Commercial</li>
+                <li>To be fair, multiple windows / tabs IS a feature. It's just part of the paid version.</li>                             
+              </ul>
+               
+            </div>                
+            </span>            
+          </div>
+        </div>
+        <div class="col-lg-2 inline-block">
+
+        </div>
+      </div>
+
+                <!-- Review Page. It'll be hided  -->
+      <div>
+        <br>
+          <hr class="seprt">
+        <br>
+
+        <div class="card also">          
+
+          <!-- <p class="text-left">{{current_user.name}} | Total reviews: {{ current_user.total_reviews }}</p> -->
+            
+          <h6 class="text-center" style="color:red">Your New Review For:</h6>
+          <h3 class="text-center">{{product.name}}</h3>
+
+            <ul>
+              <li class="text-danger" v-for="error in errors">{{ error }}</li>
+            </ul>
+
+            <div class="form-group">
+              <label>Rating:</label>
+
+              <fieldset class="rating">
+                <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+            </fieldset>
+
+              <input type="digit" class="form-control" v-model="stars" placeholder="1...5" style="width: 6%">
+            </div>
+
+            <div class="form-group">
+              <label>Text:</label>
+              <textarea class="form-control" v-model="text" rows="4" placeholder="Enter Your Comment Here"></textarea>
+            </div>
+
+            <!-- <div class="form-group">       
+               <input type="text" class="form-control" v-model="product.id" list="names">
+              <datalist id="names">
+                 <option v-for="product in products">{{ product.id + " " + product.name }}</option>
+              </datalist>
+            </div> -->
+
+            <button class="btn btn-primary" style="width: 20%" v-on:click="submit()">Add Review</button>    
+
+        </div> <!-- Review Page. hided part -->  
+            
+            <!-- <div class="rating">
+              <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+            </div> -->
+ 
+            <!-- <div class="card-body">
+              <p> {{ review.text }}</p>
+            </div>   -->                 
+
+        <!-- Reviewer: <input v-model="newReview.reviewer">
+        Rating: <input v-model="newReview.stars">
+        Review: <input v-model="newReview.text"><br>   -->
+           <!--  <button v-on:click="addReview()">Add Review</button>
+          </div> -->
+
+
+          
+
+      <br>
+        <hr class="seprt">
+      <br>
+      
+      <h4 class="text-center">See also:</h4>
+
+        <div class="card-deck also">
+          <div class="card">
+            <div class="container">
+            <div><a :href="product_also1.bank.url" target="_blank"><img class="card-img-top" :src="product_also1.bank.brand_img_url" alt="Card image cap" style="width:50%"></a></div>
+             <div>
+              <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
+            <span>{{ product_also1.avrg_stars }}</span>                        
+            <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
+                <i class="far fa-comments"></i>
+                <span style="color:black" class="fa-layers-counter">{{ product_also1.review_count }}</span>
+            </span>            
+             </div>
+           </div>             
+            <div class="card-body">
+              <h5 class="card-title text-center"><a :href="'/#/products/' + product_also1.id">{{ product_also1.name }}</a></h5>
+              <h5 class="text-center"><a :href="'/#/banks/' + product_also1.bank_id">{{ product_also1.bank.title }}</a></h5>              
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <div class="inline-block">
+                  <span>          
+                    <span style="font-size:1.5em; color:Gold"><i class="far fa-smile"></i></span>
+                    <ul class="circle">
+                      <li>Created by an experienced developer in the field</li>     
+                    </ul>
+                  </span>
+                  <div>
+                    <span style="font-size:1.5em; color:Tomato"><i class="far fa-frown"></i></span>
+                    <ul class="circle">       
+                      <li>No multiple query tabs in the free trial version</li>       
+                    </ul>
+                     
+                  </div>      
+                </div>
+              </small>
+              
+            </div>
+          </div>
+          
+           <div class="card">
+            <div class="container">
+            <div><a :href="product_also2.bank.url" target="_blank"><img class="card-img-top" :src="product_also2.bank.brand_img_url" alt="Card image cap" style="width:50%"></a></div>
+             <div>
+              <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
+            <span>{{ product_also2.avrg_stars}}</span>                        
+            <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
+                <i class="far fa-comments"></i>
+                <span style="color:black" class="fa-layers-counter">{{ product_also2.review_count}}</span>
+            </span>            
+             </div>
+           </div>             
+            <div class="card-body">
+              <h5 class="card-title text-center"><a :href="'/#/products/' + product_also2.id">{{ product_also2.name }}</a></h5>
+              <h5 class="text-center"><a :href="'/#/banks/' + product_also2.bank_id">{{ product_also2.bank.title }}</a></h5>              
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <div class="inline-block">
+                  <span>          
+                    <span style="font-size:1.5em; color:Gold"><i class="far fa-smile"></i></span>
+                    <ul class="circle">
+                      <li>Native experience and clean user interface</li>     
+                    </ul>
+                  </span>
+                  <div>
+                    <span style="font-size:1.5em; color:Tomato"><i class="far fa-frown"></i></span>
+                    <ul class="circle">       
+                      <li>To be fair, multiple windows / tabs IS a feature. It's just part of the paid version.</li>       
+                    </ul>
+                     
+                  </div>      
+                </div>
+              </small>
+              
+            </div>
+          </div>
+          
+        </div>  
+
+    <br>
+      <hr class="seprt">
+    <br>
+
+        <h4 class="text-center">Reviews:</h4>
+
+        <div v-for="review in product.reviews">
+
+          <div class="card also">
+            <div class="media">
+                <span class="media-left" style="font-size:1em; color:Gold">
+                    <i class="fas fa-user-circle"></i>
+                </span>
+                <div class="media-body" id="textbox">
+                    <span>                      
+                      <span> {{ review.user.first_name }} {{ review.user.last_name }}</span> 
+                      <span class="alignright">{{ review.created_at }}</span>
+                    </span>  
+                </div>
+                  <div style="clear: both;"></div>
+            </div>
+            <div class="media">
+                <span class="media-left" style="font-size:1em; color:Gold">
+                    <i class="fas fa-trophy"></i>
+                </span>
+                <div class="media-body" id="textbox">
+                  <span class="media-heading alignleft">{{ review.stars }}</span>
+                </div>
+                  <div style="clear: both;"></div>
+            </div>    
+            <div class="card-body">
+              <p> {{ review.text }}</p>
+            </div>            
+          </div>
+        </div>
+
+    <br>
+    <a href="/#/categories">Back to all categories</a>
+
+  </div>
+</template>
+
+<template id="reviews-new-page">
   <div class="vue-component body-width">
       
     <h2 class="text-center">{{ product.name }}</h2>
@@ -518,6 +778,100 @@
 
     <br>
     <a href="/#/banks">Back to all banks</a>
+
+  </div>
+</template>
+
+<template id="signup-page">
+  <div class="vue-component">
+
+    <div class="box-auth">
+      
+      <div lass="box-ins">
+        <h3 class="new">Sign Up</h3>
+      </div>
+
+      <h1 class="text-center">Sign Up for Free</h1>
+    
+        <div class="field-wrap">
+          <ul>
+            <li class="text-danger" v-for="error in errors">{{ error }}</li>
+          </ul>
+        </div>
+        
+        <div class="field-wrap">
+          <label>
+            Name<span class="req">*</span>
+          </label>
+          <input type="text" class="form-control" v-model="first_name" placeholder="Name*">
+        </div>
+
+        <div class="field-wrap">
+          <label>
+            Email Address<span class="req">*</span>
+          </label>
+          <input type="email" class="form-control" v-model="email" placeholder="Email Address*">
+        </div>
+  
+        <div class="field-wrap">
+          <label>
+            Set A Password<span class="req">*</span>
+          </label>
+          <input type="password" class="form-control" v-model="password" placeholder="Set A Password*">
+        </div>
+
+        <div class="field-wrap">
+          <label>
+            Confirm Password<span class="req">*</span>
+          </label>
+          <input type="password" class="form-control" v-model="passwordConfirmation" placeholder="Confirm Password*">
+        </div>
+
+        <p class="forgot" ><a class="new" href="/#/login">Allready Signed Up?</a></p> 
+
+        <button class="button button-block" v-on:click="submit()">Get Started</button>
+
+    </div>    
+
+  </div>
+</template>
+
+<template id="login-page">
+  <div class="vue-component">
+
+    <div class="box-auth">
+
+      <div lass="box-ins">
+        <h3 class="new">Log In</h3>
+      </div>
+
+      <h1 class="text-center">Welcome Back!</h1>
+    
+        <div class="field-wrap">
+          <ul>
+            <li class="text-danger" v-for="error in errors">{{ error }}</li>
+          </ul>
+        </div>
+
+        <div class="field-wrap">
+          <label>
+            Email Address<span class="req">*</span>
+          </label>
+          <input type="email" class="form-control" v-model="email" placeholder="Email Address*">
+        </div>
+  
+        <div class="field-wrap">
+          <label>
+            Password<span class="req">*</span>
+          </label>
+          <input type="password" class="form-control" v-model="password" placeholder="Password*">
+        </div>
+
+        <p class="forgot" ><a class="new" href="/#/">Forgot Password?</a></p>        
+
+        <button class="button button-block" v-on:click="submit()">Log In</button>
+
+    </div>
 
   </div>
 </template>

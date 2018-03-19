@@ -14,7 +14,7 @@ class Review < ApplicationRecord
       stars: stars,
       text: text,
       created_at: friendly_created_at,
-      user: user.as_json      
+      user: user.as_json   
     }    
   end
 
