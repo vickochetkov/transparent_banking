@@ -1,4 +1,17 @@
 /* global Vue, VueRouter, axios */
+// var App = {  
+//   data: function() {
+//     return {
+//       current_user: {}      
+//     };
+//   },
+//   created: function() {
+//     axios.get("/users/" + this.$route.params.id).then(function(response) {
+//       //console.log(response.data);
+//       this.current_user = response.data;      
+//     }.bind(this));       
+//   },      
+// };
 
 var HomePage = {
   template: "#home-page",
@@ -103,13 +116,18 @@ var ProductsShowPage = {
       axios
         .post("/reviews", params)
         .then(function(response) {
-          router.push("/");
+          router.push("/categories");
         })
         .catch(
           function(error) {
             this.errors = error.response.data.errors;
           }.bind(this)
         );
+    },
+
+    toggle: function() {
+      var newReviewDiv = document.getElementById('newReview');
+      newReviewDiv.classList.toggle('hidden');  
     }
   }      
 };
@@ -125,7 +143,7 @@ var BanksShowPage = {
   },
   created: function() {
     axios.get("/banks/" + this.$route.params.id).then(function(response) {
-      console.log(response.data);
+      //console.log(response.data);
       this.bank = response.data;      
     }.bind(this));
     axios.get("/banks/2").then(function(response) {
@@ -138,6 +156,105 @@ var BanksShowPage = {
     }.bind(this));    
   },      
 };
+
+var UsersShowPage = {
+  template: "#users-show-page",
+  data: function() {
+    return {
+      current_user: {},
+      id: "",      
+      first_name: "",
+      second_name: "",
+      last_name: "",
+      email: "",
+      image_url: "",
+      total_reviews: "",
+      date_of_birth: ""      
+    };
+  },
+  created: function() {
+    axios.get("/users/" + this.$route.params.id).then(function(response) {
+      this.first_name = response.data.first_name;
+      this.second_name = response.data.second_name;
+      this.last_name = response.data.last_name;
+      this.email = response.data.email;
+      this.image_url = response.data.image_url;
+      this.date_of_birth = response.data.date_of_birth;
+      this.current_user = response.data;
+      this.total_reviews = response.data.total_reviews;     
+      //console.log(response.data);
+    }.bind(this));       
+  },
+
+  methods: {
+    deleteUser: function(user) {
+      axios.delete("/users/" + user.id).then(function(response) {
+          router.push("/");
+        })
+    }
+  }     
+};
+
+var UsersEditPage = {
+  template: "#users-edit-page",
+  data: function() {
+    return {
+      full_name: "",
+      first_name: "",
+      second_name: "",
+      last_name: "",
+      email: "",
+      image_url: "",
+      date_of_birth: "",
+      total_reviews: "",
+      errors: []
+    };
+  },
+  created: function() {
+    axios.get("/users/" + this.$route.params.id).then(
+      function(response) {          
+        this.first_name = response.data.first_name;
+        this.second_name = response.data.second_name;
+        this.last_name = response.data.last_name;
+        this.email = response.data.email;
+        this.image_url = response.data.image_url;
+        this.date_of_birth = response.data.date_of_birth;
+        this.total_reviews = response.data.total_reviews; 
+        this.full_name = this.first_name + " " +  this.second_name + " " + this.last_name;
+      }.bind(this)
+    );
+  },
+  methods: {
+    submit: function() {
+      var params = {
+        first_name: this.first_name,
+        second_name: this.second_name,
+        last_name: this.last_name,
+        email: this.email,
+        image_url: this.image_url,
+        date_of_birth: this.date_of_birth
+      };
+      axios
+        .patch("/users/" + this.$route.params.id, params)
+        .then(function(response) {
+          router.push("/users/" + this.id);
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+            router.push("/");
+          }.bind(this)
+        );
+    },
+    
+    deleteUser: function(user) {
+      axios.delete("/users/" + user.id).then(function(response) {
+        router.push("/");
+      })    
+    }
+
+  }
+};  
 
 var SignupPage = {
   template: "#signup-page",
@@ -214,31 +331,6 @@ var LogoutPage = {
   }
 };
 
-// var ReviewsNewPage = {
-//   template: "#reviews-new-page",
-//   data: function() {
-//     return {
-//       product: {},
-//       product_also1: {},
-//       product_also2: {}          
-//     };
-//   },
-//   created: function() {
-//     axios.get("/products/" + this.$route.params.id).then(function(response) {
-//       //console.log(response.data);
-//       this.product = response.data;      
-//     }.bind(this));
-//     axios.get("/products/2").then(function(response) {
-//       //console.log(response.data);
-//       this.product_also1 = response.data;      
-//     }.bind(this));
-//     axios.get("/products/3").then(function(response) {
-//       //console.log(response.data);
-//       this.product_also2 = response.data;      
-//     }.bind(this));
-//   },      
-// };
-
 var CategoriesIndexPage = {
   template: "#categories-index-page",
   data: function() {
@@ -267,12 +359,10 @@ var router = new VueRouter({
     { path: "/logout", component: LogoutPage },    
     { path: "/categories/:id", component: CategoriesShowPage },
     { path: "/products/:id", component: ProductsShowPage },
-    // { path: "/reviews/new", component: ReviewsNewPage },
-    // { path: "/reviews/:id/edit", component: ReviewsUpdatePage },
-    // { path: "/reviews/:id/delete", component: ReviewsDeletePage },
-    { path: "/banks/:id", component: BanksShowPage }
-    // { path: "/products/:id/edit", component: ProductsUpdatePage },
-    // { path: "/images/new", component: ImagesNewPage }
+    { path: "/users/:id", component: UsersShowPage },
+    { path: "/users/:id/edit", component: UsersEditPage },
+    { path: "/users/:id/delete", component: UsersDeletePage },
+    { path: "/banks/:id", component: BanksShowPage }    
 
   ],
   scrollBehavior: function(to, from, savedPosition) {

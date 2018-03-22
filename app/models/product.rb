@@ -15,7 +15,7 @@ class Product < ApplicationRecord
       status: status,      
       bank: bank.as_json,
       review_count: reviews.size,
-      avrg_stars: reviews.average(:stars),
+      avrg_stars: (reviews.average(:stars)).to_f.round(2),
       reviews: reviews.as_json    
     }    
   end

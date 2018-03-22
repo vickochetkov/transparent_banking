@@ -5,7 +5,7 @@ class Bank < ApplicationRecord
   def rating
     products_stars = (products.map { |product| product.reviews.average(:stars) }).select{|review| review != nil }
     return "no reviews" if products_stars.size == 0
-    products_stars.inject { |sum, el| sum + el }.to_f / products_stars.size
+    (products_stars.inject { |sum, el| sum + el }.to_f / products_stars.size).round(2)
   end
 
   def review_counter

@@ -30,5 +30,5 @@ Rails.application.routes.draw do
   post "/categories" => "categories#create"
   patch "/categories/:id" => "categories#update"
   delete "/categories/:id" => "categories#destroy"
-  
+
 end
