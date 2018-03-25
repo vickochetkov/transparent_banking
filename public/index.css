@@ -39,6 +39,12 @@ div.also {
   padding: 15px;
 }
 
+div.upd-mod {
+  width:auto;
+  margin:auto;
+  padding: 15px;
+}
+
 div.profile {
   width: 100%;
   height: 350px;
@@ -114,7 +120,7 @@ background: gold;
 }
 
 .btn {
-    font-family: Helvetica;
+    font-family: Tahoma;
 }
 
 hr.seprt0 {

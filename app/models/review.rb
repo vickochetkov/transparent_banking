@@ -2,6 +2,8 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :product
 
+  validates :stars, presence: true, :inclusion => 1..5  
+
   def friendly_created_at
     updated_at.strftime("%b %d, %Y")
   end 

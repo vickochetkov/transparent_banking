@@ -1,16 +1,16 @@
 /* global Vue, VueRouter, axios */
-// var App = {  
+// var App = {
 //   data: function() {
 //     return {
-//       current_user: {}      
+//       current_user: {}
 //     };
 //   },
 //   created: function() {
 //     axios.get("/users/" + this.$route.params.id).then(function(response) {
 //       //console.log(response.data);
-//       this.current_user = response.data;      
-//     }.bind(this));       
-//   },      
+//       this.current_user = response.data;
+//     }.bind(this));
+//   },
 // };
 
 var HomePage = {
@@ -38,7 +38,7 @@ var BanksIndexPage = {
       this.banks = response.data; //array or banks data
       //console.log(response.data);
     }.bind(this));
-  }  
+  }
 };
 
 var ProductsIndexPage = {
@@ -52,22 +52,22 @@ var ProductsIndexPage = {
     axios.get("http://localhost:3000/products").then(function(response) {
       this.products = response.data;
     }.bind(this));
-  }  
+  }
 };
 
 var CategoriesShowPage = {
   template: "#categories-show-page",
   data: function() {
     return {
-      category: {}          
+      category: {}
     };
   },
   created: function() {
     axios.get("/categories/" + this.$route.params.id).then(function(response) {
       console.log(response.data);
-      this.category = response.data;      
-    }.bind(this));      
-  },      
+      this.category = response.data;
+    }.bind(this));
+  },
 };
 
 var ProductsShowPage = {
@@ -75,12 +75,16 @@ var ProductsShowPage = {
   data: function() {
     return {
       products: [],
-      product: {},      
+      product: {},
       product_also1: {},
       product_also2: {},
-      text: "", 
+      text: "",
       stars: "",
-      errors: []
+      current_user: {},
+      errors: [],
+      currentReview: {},
+      sortAttribute: "created_at",
+      sortAscending: false
     };
   },
   created: function() {
@@ -90,19 +94,24 @@ var ProductsShowPage = {
     }.bind(this));
     axios.get("/products/" + this.$route.params.id).then(function(response) {
       //console.log(response.data);
-      this.product = response.data;      
+      this.product = response.data;
     }.bind(this));
-    // axios.get("/users/" + this.$route.params.id).then(function(response) {
+    // axios.get("/reviews/" + this.$route.params.id).then(function(response) {
     //   //console.log(response.data);
-    //   this.current_user = response.data;      
+    //   this.stars = response.data.stars;
+    //   this.text = response.data.text;
     // }.bind(this));
+    axios.get("/users/user").then(function(response) {
+      //console.log(response.data);
+      this.current_user = response.data;
+    }.bind(this));
     axios.get("/products/2").then(function(response) {
       //console.log(response.data);
-      this.product_also1 = response.data;      
+      this.product_also1 = response.data;
     }.bind(this));
     axios.get("/products/3").then(function(response) {
       //console.log(response.data);
-      this.product_also2 = response.data;      
+      this.product_also2 = response.data;
     }.bind(this));
   },
 
@@ -123,13 +132,56 @@ var ProductsShowPage = {
             this.errors = error.response.data.errors;
           }.bind(this)
         );
-    },
+    },    
 
     toggle: function() {
       var newReviewDiv = document.getElementById('newReview');
-      newReviewDiv.classList.toggle('hidden');  
+      newReviewDiv.classList.toggle('hidden');
+    },
+
+    setSortAttribute: function(attribute) {
+      if(attribute !== this.sortAttribute) {
+        this.sortAscending = true;
+      } else {
+        this.sortAscending = !this.sortAscending;
+      }
+      this.sortAttribute = attribute;
+    },
+
+    setCurrentReview: function(review) {
+      this.currentReview = review;
+      console.log(this.currentReview);
+    },
+
+    submEditRev: function(id) {
+      var params = {
+        product_id: this.product_id,
+        stars: this.stars,
+        text: this.text
+      };
+      axios
+      .patch("/reviews" + id, params)
+      .then(function(response) {
+        router.push("/products/" + this.product_id);
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    },
+  },
+  computed: {
+    sortedReviews: function() {
+      return this.product.reviews.sort(function(review1, review2) {
+        if(this.sortAscending) {
+          return review1[this.sortAttribute].localeCompare(review2[this.sortAttribute]);
+        } else {
+          return review2[this.sortAttribute].localeCompare(review1[this.sortAttribute]);
+        }
+      }.bind(this));
     }
-  }      
+  }
 };
 
 var BanksShowPage = {
@@ -137,24 +189,103 @@ var BanksShowPage = {
   data: function() {
     return {
       bank: {},
+      current_user: {},
+      product_id: "",
+      text: "",
+      stars: "",
       bank_also1: {},
-      bank_also2: {}
+      bank_also2: {},
+      errors: [],
+      sortAttribute: "created_at",
+      sortAscending: false
     };
   },
   created: function() {
     axios.get("/banks/" + this.$route.params.id).then(function(response) {
       //console.log(response.data);
-      this.bank = response.data;      
+      this.bank = response.data;
+    }.bind(this));
+    axios.get("/users/user").then(function(response) {
+      //console.log(response.data);
+      this.current_user = response.data;
     }.bind(this));
     axios.get("/banks/2").then(function(response) {
       //console.log(response.data);
-      this.bank_also1 = response.data;      
+      this.bank_also1 = response.data;
     }.bind(this));
     axios.get("/banks/3").then(function(response) {
       //console.log(response.data);
-      this.bank_also2 = response.data;      
-    }.bind(this));    
-  },      
+      this.bank_also2 = response.data;
+    }.bind(this));
+  },
+
+  methods: {
+    submit: function() {
+      var params = {
+        product_id: this.product_id,
+        stars: this.stars,
+        text: this.text
+      };
+      axios
+        .post("/reviews", params)
+        then(function(response) {
+          router.push("/categories");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    },
+
+    submEditRev: function() {
+      var params = {
+        product_id: this.product_id,
+        stars: this.stars,
+        text: this.text
+      };
+      axios
+      .patch("/reviews" + this.$route.params.id, params)
+      .then(function(response) {
+        router.push("/banks/" + this.bank.id);
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    },
+
+    toggle: function() {
+      var nReviewDiv = document.getElementById('nReview');
+      nReviewDiv.classList.toggle('hidden');
+    },
+
+    toggleEditRev: function() {
+      var editReviewDiv = document.getElementById('editReview');
+      editReviewDiv.classList.toggle('hidden');
+    },
+
+    setSortAttribute: function(attribute) {
+      if(attribute !== this.sortAttribute) {
+        this.sortAscending = true;
+      } else {
+        this.sortAscending = !this.sortAscending;
+      }
+      this.sortAttribute = attribute;
+    }
+  },
+  computed: {
+    sortedReviews: function() {
+      return this.bank.reviews.sort(function(review1, review2) {
+        if(this.sortAscending) {
+          return review1[this.sortAttribute].localeCompare(review2[this.sortAttribute]);
+        } else {
+          return review2[this.sortAttribute].localeCompare(review1[this.sortAttribute]);
+        }
+      }.bind(this));
+    }
+  }
 };
 
 var UsersShowPage = {
@@ -162,14 +293,14 @@ var UsersShowPage = {
   data: function() {
     return {
       current_user: {},
-      id: "",      
+      id: "",
       first_name: "",
       second_name: "",
       last_name: "",
       email: "",
       image_url: "",
       total_reviews: "",
-      date_of_birth: ""      
+      date_of_birth: ""
     };
   },
   created: function() {
@@ -181,9 +312,9 @@ var UsersShowPage = {
       this.image_url = response.data.image_url;
       this.date_of_birth = response.data.date_of_birth;
       this.current_user = response.data;
-      this.total_reviews = response.data.total_reviews;     
+      this.total_reviews = response.data.total_reviews;
       //console.log(response.data);
-    }.bind(this));       
+    }.bind(this));
   },
 
   methods: {
@@ -192,7 +323,7 @@ var UsersShowPage = {
           router.push("/");
         })
     }
-  }     
+  }
 };
 
 var UsersEditPage = {
@@ -212,14 +343,14 @@ var UsersEditPage = {
   },
   created: function() {
     axios.get("/users/" + this.$route.params.id).then(
-      function(response) {          
+      function(response) {
         this.first_name = response.data.first_name;
         this.second_name = response.data.second_name;
         this.last_name = response.data.last_name;
         this.email = response.data.email;
         this.image_url = response.data.image_url;
         this.date_of_birth = response.data.date_of_birth;
-        this.total_reviews = response.data.total_reviews; 
+        this.total_reviews = response.data.total_reviews;
         this.full_name = this.first_name + " " +  this.second_name + " " + this.last_name;
       }.bind(this)
     );
@@ -246,15 +377,15 @@ var UsersEditPage = {
           }.bind(this)
         );
     },
-    
+
     deleteUser: function(user) {
       axios.delete("/users/" + user.id).then(function(response) {
         router.push("/");
-      })    
+      })
     }
 
   }
-};  
+};
 
 var SignupPage = {
   template: "#signup-page",
@@ -327,7 +458,7 @@ var LogoutPage = {
   created: function() {
     axios.defaults.headers.common["Authorization"] = undefined;
     localStorage.removeItem("jwt");
-    router.push("/");
+    router.push("/#/login");
   }
 };
 
@@ -345,7 +476,7 @@ var CategoriesIndexPage = {
       console.log(response.data);
 
     }.bind(this));
-  }  
+  }
 };
 
 var router = new VueRouter({
@@ -356,13 +487,12 @@ var router = new VueRouter({
     { path: "/categories", component: CategoriesIndexPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
-    { path: "/logout", component: LogoutPage },    
+    { path: "/logout", component: LogoutPage },
     { path: "/categories/:id", component: CategoriesShowPage },
     { path: "/products/:id", component: ProductsShowPage },
     { path: "/users/:id", component: UsersShowPage },
     { path: "/users/:id/edit", component: UsersEditPage },
-    { path: "/users/:id/delete", component: UsersDeletePage },
-    { path: "/banks/:id", component: BanksShowPage }    
+    { path: "/banks/:id", component: BanksShowPage }
 
   ],
   scrollBehavior: function(to, from, savedPosition) {
@@ -380,5 +510,3 @@ var app = new Vue({
     }
   }
 });
-
-
