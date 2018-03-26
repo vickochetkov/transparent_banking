@@ -12,6 +12,7 @@ class BanksController < ApplicationController
   end
 
   def show
+    
     bank = Bank.find_by(id: params[:id])
     render json: bank.as_json    
   end  

@@ -10,7 +10,8 @@ class ReviewsController < ApplicationController
     render json: review.as_json    
   end
 
-  def create     
+  def create
+    if not_guest_user?     
       review = Review.new(
         user_id: current_user.id,      
         product_id: params[:product_id],
@@ -21,7 +22,8 @@ class ReviewsController < ApplicationController
         render json: review.as_json 
       else
         render json: {errors: review.errors.full_messages}, status: 422
-      end    
+      end
+    end      
   end
 
     def update

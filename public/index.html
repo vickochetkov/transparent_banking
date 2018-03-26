@@ -42,7 +42,7 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="/#/users/:id" style="font-size: 0.5em; text-decoration: underline">My Profile: {{ current_user.first_name }} <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/#/users/user" style="font-size: 0.5em; text-decoration: underline">My Profile<span class="sr-only">(current)</span></a>
 
       </li>
     </ul>
@@ -64,23 +64,626 @@
 </html>
 
 <template id="home-page">
-  <div class="vue-component">
+  <div class="vue-component body-width" id="p1">
 
-    <h1>{{ message }}</h1>
+      <h1 class="text-center">WELCOME!</h1>
+
+      <div class="card-deck also">
+        <div class="card">
+
+          <h5 class="text-center">Our friendly society is very glad to meet you here and share our own experience to make everyday Banking realy transparent and fair.</h5>
+
+        </div>
+
+        <div class="card">
+
+          <a href="/#/signup"><h6 class="text-center" style="color:#28a745">Join us!</h6>
+          <h6 class="text-center" style="color:#28a745">Share Your Experience!</h6>
+          <h6 class="text-center" style="color:#28a745">Every voice matters</h6></a>
+
+        </div>
+
+    </div>
+
+    <br>
+    <h1 class="text-center"> Want to choose Bank Service?</h1>
+    <br>
+
+    <div class="card-deck also">
+      <div class="card">
+
+        <a href="#p2"><h1 class="text-center" style="color:red">START!</h1>
+        <h3 class="text-center">Make your choice</h3></a>
+      </div>
+    </div>
+
+    <br>
+      <hr class="seprt">
+    <br>
+
+    <div class="card-deck also" id="p2">
+      <div class="card">
+        <div class="container">
+
+        </div>
+        <div class="card-body">
+          <a href="#p3"><h5 class="card-title text-center"> Checking Accounts</h5>
+          <h5 class="card-title text-center">Debit Cards</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="#p4"><h5 class="card-title text-center"> Savings Accounts</h5>
+          <h5 class="card-title text-center">Time Accounts</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="card-deck also">
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="#p5"><h5 class="card-title text-center">Credit Cards</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="#p6"><h5 class="card-title text-center">Loans</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="card-deck also">
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="#"><h5 class="card-title text-center">Foreign Exchange</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories"><h5 class="card-title text-center">Show Me All the Categories</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+    </div>
+
+    <a href="#p1"><h6>Top</h6></a>
+    
+    <br>
+      <hr class="seprt">
+    <br>
+
+    <div class="card-deck also" id="p3">
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/1"><h5 class="card-title text-center">Core Checking</h5>
+          <h5 class="card-title text-center"></h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/2"><h5 class="card-title text-center">Interest Checking</h5></a>
+          <h5 class="card-title text-center"></h5>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="card-deck also">
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/3"><h5 class="card-title text-center">Student Banking</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/4"><h5 class="card-title text-center">Business Checking</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+    </div>    
+
+    <a href="#p1"><h6>Top</h6></a>
+
+    <br>
+      <hr class="seprt">
+    <br>
+
+    <div class="card-deck also" id="p4">
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/6"><h5 class="card-title text-center">Rewards Savings</h5>
+          <h5 class="card-title text-center"></h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/5"><h5 class="card-title text-center">Child Savings</h5></a>
+          <h5 class="card-title text-center"></h5>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="card-deck also">
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/7"><h5 class="card-title text-center">CD's</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/8"><h5 class="card-title text-center">IRA's</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+    </div>    
+
+    <a href="#p1"><h6>Top</h6></a>
+
+    <br>
+      <hr class="seprt">
+    <br>
+
+    <div class="card-deck also" id="p5">
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/9"><h5 class="card-title text-center">Cash Back</h5>
+          <h5 class="card-title text-center"></h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+            </div>
+          </small>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/10"><h5 class="card-title text-center">Travel and Airlines Rewards Cards</h5></a>
+          <h5 class="card-title text-center"></h5>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+            </div>
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-deck also">
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/11"><h5 class="card-title text-center">Lower Interest Rate Cards</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+            </div>
+          </small>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/12"><h5 class="card-title text-center">Points Rewards Cards</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card-deck also">
+      <div class="card">
+        <div class="container">
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/13"><h5 class="card-title text-center">Hotel Credit Cards</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+            </div>
+          </small>
+        </div>
+      </div>
+      <div class="card">
+        <div class="container">
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/14"><h5 class="card-title text-center">No Foreign Transaction Fee Credit Cards</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+            </div>
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-deck also">
+      <div class="card">
+        <div class="container">
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/15"><h5 class="card-title text-center">0% Intro APR</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+            </div>
+          </small>
+        </div>
+      </div>
+      <div class="card">
+        <div class="container">
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/16"><h5 class="card-title text-center">Balance Transfer</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+            </div>
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-deck also">
+      <div class="card">
+        <div class="container">
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/17"><h5 class="card-title text-center">No Annual Fee</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+            </div>
+          </small>
+        </div>
+      </div>
+      <div class="card">
+        <div class="container">
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/18"><h5 class="card-title text-center">Small Business Credit Cards</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+            </div>
+          </small>
+        </div>
+      </div>
+    </div>                  
+
+    <a href="#p1"><h6>Top</h6></a>
+
+    <br>
+      <hr class="seprt">
+    <br>
+
+    <div class="card-deck also" id="p6">
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/19"><h5 class="card-title text-center">Home Equity</h5>
+          <h5 class="card-title text-center"></h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+            </div>
+          </small>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/20"><h5 class="card-title text-center">Student Loans</h5></a>
+          <h5 class="card-title text-center"></h5>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card-deck also">
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/21"><h5 class="card-title text-center">Auto Loan & Vehicle Financing</h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="container">
+
+       </div>
+        <div class="card-body">
+          <a href="/#/categories/22"><h5 class="card-title text-center">Personal Lines and Loans </h5></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div class="inline-block">
+
+
+            </div>
+          </small>
+
+        </div>
+      </div>
+
+    </div>    
+
+    <a href="#p1"><h6>Top</h6></a>    
+
+    <br>
+      <hr class="seprt">
+    <br>
+
 
   </div>
 </template>
 
 <template id="banks-index-page">
-  <div class="vue-component">
-      <div v-for="bank in banks" class="row">
+  <div class="vue-component body-width">
+
+    <h1 class="text-center">Banks Rating</h1><br>
+
+      <div>
+        <button v-on:click="setSortAttribute('rating')">Sort by Rating</button>
+        <button v-on:click="setSortAttribute('title')">Sort by Title</button>
+      </div>
+      <br>
+
+      <div id="banks" v-for="bank in sortedBanks" class="row" v-bind:key="bank.id">
         <div class="col-lg-2">
           <a v-bind:href="bank.url" target="_blank"><img class="small-img" :src="bank.brand_img_url" alt="Bank brand image"></a>
         </div>
         <div class="col-lg-4 inline-block">
-          <h4>1. <a :href="'/#/banks/' + bank.id">{{ bank.title }}</a></h4>
+          <h4><a :href="'/#/banks/' + bank.id">{{ bank.title }}</a></h4>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <div class="inline-block">
             <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
             <span> {{ bank.rating }}</span>
@@ -101,21 +704,27 @@
 </template>
 
 <template id="categories-show-page">
-  <div class="vue-component">
+  <div class="vue-component body-width">
 
     <h2 class="text-center">{{ category.title }}</h2>
 
-      <div v-for="product in category.products" class="row">
+    <div>
+      <button v-on:click="setSortAttribute('name')">Sort by Name</button>
+      <button v-on:click="setSortAttribute('rating')">Sort by Rating</button>
+    </div>
+    <br>
+
+      <div v-for="product in sortedProducts" class="row" v-bind:key="product.id">
         <div class="col-lg-2">
 
           <a v-bind:href="product.bank.bank_url" target="_blank"><img class="small-img" :src="product.bank.brand_img_url" alt="Bank brand image"></a>
 
         </div>
         <div class="col-lg-4 inline-block">
-          <h4>1. <a :href="'/#/products/' + product.id">{{ product.name }}</a></h4>
+          <h4><a :href="'/#/products/' + product.id">{{ product.name }}</a></h4>
           <p><a :href="'/#/banks/' + product.bank.id">{{ product.bank.title }}</a></p>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <div class="inline-block">
             <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
             <span>{{ product.rating }}</span>
@@ -127,7 +736,7 @@
           </div>
         </div>
         <div class="col-lg-1">
-          <button type="button" class="btn btn-primary" style="font-size:0.7em color=Black">Leave your review <span class="badge badge-light">14</span>
+          <button type="button" class="btn btn-primary .btn-sm" style="font-size:0.7em color=Black">Leave your review <span class="badge badge-light">14</span>
             <span class="sr-only">Total reviews</span>
           </button>
         </div>
@@ -158,7 +767,7 @@
                 <i class="far fa-comments"></i>
                 <span style="color:black" class="fa-layers-counter">{{ product.review_count }}</span>
             </span>
-            <a href="#newReview" style="color:white"><button type="button" class="btn btn-primary .btn-sm" style="font-size:0.6em" v-on:click="toggle()">Leave your review <span class="badge badge-light"> {{ current_user.total_reviews }}</span></a>
+            <a href="#newReview" v-if="current_user" style="color:white"><button type="button" class="btn btn-primary .btn-sm" style="font-size:0.6em" v-on:click="toggle()">Leave your review <span class="badge badge-light"> {{ current_user.total_reviews }}</span></a>
             <span class="sr-only">Total reviews</span>
           </button>
           </div>
@@ -217,7 +826,7 @@
               </div>
               <div class="col-lg-1">
               </div>
-              <div class="col-lg-5">
+              <div class="col-lg-5" v-if="current_user">
                 <p>Will be posted publicly as <strong>{{ current_user.full_name }}</strong> | <a href="/#/logout">(not You?)</a></p>
               </div>
             </div>
@@ -343,9 +952,8 @@
         <h4 class="text-center" id="reviewsShow">Reviews:</h4>
 
         <div>
-          <button v-on:click="setSortAttribute('user.first_name')">Sort by Name</button>
           <button v-on:click="setSortAttribute('stars')">Sort by Rating</button>
-          <button v-on:click="setSortAttribute('created_at')">Sort by Data</button>
+          <button v-on:click="setSortAttribute('created_at')">Sort by Date</button>
         </div>
         <br>
 
@@ -377,8 +985,8 @@
               <p> {{ review.text }}</p>
             </div>
 
-            <div v-if="review.user.id == current_user.id">
-              <a href="#editReview"><button type="button" class="btn btn-primary .btn-sm" style="width: 20%" data-toggle="modal" data-target="#updReview">Edit</button></a>
+            <div v-if="current_user && review.user.id == current_user.id">
+              <a href="#editReview"><button type="button" class="btn btn-primary .btn-sm" style="width: 20%" v-on:click="setCurrentReview(review.id)" data-toggle="modal" data-target="#updReview">Edit</button></a>
             </div>
 
 
@@ -397,17 +1005,17 @@
                 </button>
               </div>
               <div class="modal-body">
-                
+
                <div class="card upd-mod">
 
                 <div class="row">
                   <div class="col-lg-6">
                     <h3 class="text-left">{{product.name}}</h3>
-                    
+
                   </div>
                   <div class="col-lg-1">
                   </div>
-                  <div class="col-lg-5">
+                  <div class="col-lg-5" v-if="current_user">
                     <p> Was posted as <strong>{{ current_user.full_name }}</strong> | <a href="/#/logout">(not You?)</a></p>
                   </div>
                 </div>
@@ -420,6 +1028,7 @@
                 <label>Rating:</label>
 
                 <input type="digit" class="form-control custom-select-sm" v-model="stars" placeholder="1...5" style="width: 6%">
+
               </div>
 
               <div class="form-group">
@@ -430,18 +1039,16 @@
                </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" v-on:click="submEditRev(id)">Save changes</button>
-               <!--  <div class="row">
+                <div class="row">
                   <div class="col-lg-2 inline-block">
-                    <button class="btn btn-primary" style="width: 100%" v-on:click="submEditRev()">Submit</button>
+                    <button class="btn btn-primary" style="width: 100%" v-on:click="submEditRev()" data-dismiss="modal">Submit</button>
                   </div>
                   <div class="col-lg-2 inline-block">
                     <button class="btn btn-secondary" style="width: 100%" data-dismiss="modal">Cansel</button>
                   </div>
                    <div class="col-lg-7 inline-block">
                   </div>
-                </div> -->
+                </div>
               </div>
             </div>
           </div>
@@ -472,7 +1079,7 @@
                 <i class="far fa-comments"></i>
                 <span style="color:black" class="fa-layers-counter">{{ bank.review_count }}</span>
             </span>
-            <a href="#nReview" style="color:white"><button type="button" class="btn btn-primary .btn-sm" style="font-size:0.6em" v-on:click="toggle()">Leave your review <span class="badge badge-light"> {{ current_user.total_reviews }}</span></a>
+            <a href="#nReview" style="color:white"><button type="button" class="btn btn-primary .btn-sm" style="font-size:0.6em" v-on:click="toggle()">Leave your review <span v-if="current_user" class="badge badge-light"> {{ current_user.total_reviews }}</span></a>
             <span class="sr-only">Total reviews</span>
 
           </button>
@@ -536,7 +1143,7 @@
               </div>
               <div class="col-lg-1">
               </div>
-              <div class="col-lg-5">
+              <div v-if="current_user" class="col-lg-5">
                 <p>Will be posted publicly as <strong>{{ current_user.full_name }}</strong> | <a href="/#/logout">(not You?)</a></p>
               </div>
             </div>
@@ -593,7 +1200,7 @@
               </div>
               <div class="col-lg-1">
               </div>
-              <div class="col-lg-5">
+              <div v-if="current_user" class="col-lg-5">
                 <p> Was posted as <strong>{{ current_user.full_name }}</strong> | <a href="/#/logout">(not You?)</a></p>
               </div>
             </div>
@@ -733,9 +1340,9 @@
         <h4 class="text-center">Reviews:</h4>
 
         <div>
-          <button v-on:click="setSortAttribute('user.first_name')">Sort by Name</button>
+          <!-- <button v-on:click="setSortAttribute({{ user.first_name }})">Sort by Name</button> -->
           <button v-on:click="setSortAttribute('stars')">Sort by Rating</button>
-          <button v-on:click="setSortAttribute('created_at')">Sort by Data</button>
+          <button v-on:click="setSortAttribute('created_at')">Sort by Date</button>
         </div>
         <br>
 
@@ -766,8 +1373,8 @@
               <p> {{ review.text }}</p>
             </div>
 
-            <div v-if="review.user.id == current_user.id">
-              <a href="#editReview"><button class="btn btn-primary .btn-sm" style="width: 20%" v-on:click="toggleEditRev()">Edit</button></a>
+            <div v-if="current_user && review.user.id == current_user.id">
+              <a href="#editReview"><button class="btn btn-primary .btn-sm" style="width: 20%" data-toggle="modal" data-target="#updReview" v-on:click="setCurrentReview(review.id)">Edit</button></a>
             </div>
 
           </div>
@@ -789,7 +1396,7 @@
       <div class="col-lg-6">
         <div class="card profile">
           <div class="media">
-            <div class="media-body" id="textbox">
+            <div v-if="current_user" class="media-body" id="textbox">
               <br>
               <h1 class="text-center">{{ current_user.full_name }}</h1>
               <a href="#" target="_blank"><h6 class="text-center">{{ email }}</h6></a>
@@ -811,7 +1418,7 @@
         <p class="forgot" ><a class="new" href="/#/login">Change Password</a></p>
       </div>
       <div class="col-lg-6">
-        <a :href="'/#/users/' + current_user.id + '/edit'"><button class="button-profile">Edit</button></a>
+        <a v-if="current_user.id != 8" :href="'/#/users/' + current_user.id + '/edit'"><button class="button-profile">Edit</button></a>
       </div>
       <div class="col-lg-1">
       </div>
@@ -1003,8 +1610,18 @@
 
 <template id="categories-index-page">
   <div class="vue-component body-width">
-      <div v-for="category in categories">
-        <h5 class="text-center">{{ category.id }}.<a :href="'/#/categories/' + category.id">{{ category.title }}</a></h5>
+
+    <br>
+    <h2 class="text-center">Bank Product Categories</h2>
+    <br>
+
+    <div class="text-center">
+      <button v-on:click="setSortAttribute('title')" style="width: 20%">Sort by Title</button>
+    </div>
+    <br>    
+
+      <div v-for="category in sortedCategories" v-bind:key="category.id">
+        <h5 class="text-center"><a :href="'/#/categories/' + category.id">{{category.title }}</a></h5>
       </div>
     <br>
     <a href="/#/">Home</a>
