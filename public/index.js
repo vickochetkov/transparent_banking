@@ -104,7 +104,6 @@ var CategoriesShowPage = {
       }.bind(this));
     }
   }
-
 };
 
 var ProductsShowPage = {
