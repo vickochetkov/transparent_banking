@@ -1339,8 +1339,7 @@
                         <!-- REVIEWS: -->
         <h4 class="text-center">Reviews:</h4>
 
-        <div>
-          <!-- <button v-on:click="setSortAttribute({{ user.first_name }})">Sort by Name</button> -->
+        <div>          
           <button v-on:click="setSortAttribute('stars')">Sort by Rating</button>
           <button v-on:click="setSortAttribute('created_at')">Sort by Date</button>
         </div>
@@ -1373,10 +1372,71 @@
               <p> {{ review.text }}</p>
             </div>
 
-            <div v-if="current_user && review.user.id == current_user.id">
-              <a href="#editReview"><button class="btn btn-primary .btn-sm" style="width: 20%" data-toggle="modal" data-target="#updReview" v-on:click="setCurrentReview(review.id)">Edit</button></a>
+            <!-- <div v-if="current_user && review.user.id == current_user.id">
+              <a href="#editReview"><button type="button" class="btn btn-primary .btn-sm" style="width: 20%" v-on:click="setCurrentReview(review.id)" data-toggle="modal" data-target="#updReview">Edit</button></a>
+            </div> -->
+            
             </div>
+          </div>
+        </div>
 
+                    <!-- Edit Review Modal -->
+        <div class="modal fade" id="updReview" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" style="color:red">Your Review For:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+               <div class="card upd-mod">
+
+                <div class="row">
+                  <div class="col-lg-6">
+                    <h3 class="text-left">{{product.name}}</h3>
+
+                  </div>
+                  <div class="col-lg-1">
+                  </div>
+                  <div class="col-lg-5" v-if="current_user">
+                    <p> Was posted as <strong>{{ current_user.full_name }}</strong> | <a href="/#/logout">(not You?)</a></p>
+                  </div>
+                </div>
+
+                <ul>
+                <li class="text-danger" v-for="error in errors">{{ error }}</li>
+              </ul>
+
+              <div class="form-group">
+                <label>Rating:</label>
+
+                <input type="digit" class="form-control custom-select-sm" v-model="stars" placeholder="1...5" style="width: 6%">
+
+              </div>
+
+              <div class="form-group">
+                <label>Text:</label>
+                <textarea class="form-control" v-model="text" rows="4" placeholder="Edit Your Comment"></textarea>
+              </div>
+
+               </div>
+              </div>
+              <div class="modal-footer">
+                <div class="row">
+                  <div class="col-lg-2 inline-block">
+                    <button class="btn btn-primary" style="width: 100%" v-on:click="submEditRev()" data-dismiss="modal">Submit</button>
+                  </div>
+                  <div class="col-lg-2 inline-block">
+                    <button class="btn btn-secondary" style="width: 100%" data-dismiss="modal">Cansel</button>
+                  </div>
+                   <div class="col-lg-7 inline-block">
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

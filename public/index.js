@@ -1,22 +1,7 @@
-/* global Vue, VueRouter, axios */
-// var App = {
-//   data: function() {
-//     return {
-//       current_user: {}
-//     };
-//   },
-//   created: function() {
-//     axios.get("/users/" + this.$route.params.id).then(function(response) {
-//       //console.log(response.data);
-//       this.current_user = response.data;
-//     }.bind(this));
-//   },
-// };
-
 var HomePage = {
   template: "#home-page",
   data: function() {
-    return {      
+    return {
     };
   },
   created: function() {},
@@ -33,7 +18,7 @@ var BanksIndexPage = {
       sortAttribute: "title",
       sortAscending: true
     };
-  },  
+  },
 
   created: function() {
     axios.get("http://localhost:3000/banks").then(function(response) {
@@ -186,7 +171,7 @@ var ProductsShowPage = {
             this.errors = error.response.data.errors;
           }.bind(this)
         );
-    },    
+    },
 
     toggle: function() {
       var newReviewDiv = document.getElementById('newReview');
@@ -232,7 +217,7 @@ var ProductsShowPage = {
       axios.get("/products/" + this.$route.params.id).then(function(response) {
         //console.log(response.data);
         this.product = response.data;
-      }.bind(this));  
+      }.bind(this));
     }
   },
   computed: {
@@ -311,6 +296,7 @@ var BanksShowPage = {
         stars: this.stars,
         text: this.text
       };
+        //console.log(this.currentReview.id);
       axios
       .patch("/reviews" + this.$route.params.id, params)
       .then(function(response) {
@@ -341,9 +327,42 @@ var BanksShowPage = {
       }
       this.sortAttribute = attribute;
     }
+
+    // setCurrentReview: function(id) {
+    //   axios.get("/reviews/" + id).then(function(response) {
+    //   console.log(response);
+    //     this.stars = response.data.stars;
+    //     this.text = response.data.text;
+    //     this.currentReview = response.data;
+    //   }.bind(this));
+
+    // },
+
+    // submEditRev: function() {
+    //   var params = {
+    //     product_id: this.product.id,
+    //     stars: this.stars,
+    //     text: this.text
+    //   };
+    //     //console.log(this.currentReview.id);
+    //   axios
+    //   .patch("/reviews/" + this.currentReview.id, params)
+    //   .then(function(response) {
+    //     // router.push("/products/" + this.product.id);
+    //     })
+    //     .catch(
+    //       function(error) {
+    //         this.errors = error.response.data.errors;
+    //       }.bind(this)
+    //     );
+    //   axios.get("/products/" + this.$route.params.id).then(function(response) {
+    //     //console.log(response.data);
+    //     this.product = response.data;
+    //   }.bind(this));
+    // }
   },
   computed: {
-    sortedReviews: function() {      
+    sortedReviews: function() {
       return this.reviews.sort(function(review1, review2) {
         if(this.sortAscending) {
           return review1[this.sortAttribute].toString().localeCompare(review2[this.sortAttribute].toString());
@@ -558,7 +577,7 @@ var CategoriesIndexPage = {
   },
 
   computed: {
-    sortedCategories: function() {      
+    sortedCategories: function() {
       return this.categories.sort(function(category1, category2) {
         if(this.sortAscending) {
           return category1[this.sortAttribute].toString().localeCompare(category2[this.sortAttribute].toString());
