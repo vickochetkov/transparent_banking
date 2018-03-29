@@ -217,7 +217,21 @@ var ProductsShowPage = {
         //console.log(response.data);
         this.product = response.data;
       }.bind(this));
+    },
+
+    topProducts: function() {
+      var categoryArr = this.products.filter(b_product => b_product.category_id === this.product.category_id); 
+      categoryArr.sort((a, b) => a.rating - b.rating);
+        console.log(categoryArr[0].rating, categoryArr[1].rating)
+        if (categoryArr[0].id === this.product.id) {
+          return result = [categoryArr[1], categoryArr[2]];
+        } else if (categoryArr[1].id === this.product.id) {
+          return result = [categoryArr[0], categoryArr[2]];
+        } else {
+          return result = [categoryArr[0], categoryArr[1]];
+        } 
     }
+
   },
   computed: {
     sortedReviews: function() {
@@ -279,7 +293,7 @@ var BanksShowPage = {
       };
       axios
         .post("/reviews", params)
-        then(function(response) {
+        .then(function(response) {
           router.push("/categories");
         })
         .catch(
@@ -287,9 +301,9 @@ var BanksShowPage = {
             this.errors = error.response.data.errors;
           }.bind(this)
         );
-    },
+    }, 
 
-    submEditRev: function() {
+    subEditRev: function() {
       var params = {
         product_id: this.product_id,
         stars: this.stars,
@@ -297,15 +311,19 @@ var BanksShowPage = {
       };
         //console.log(this.currentReview.id);
       axios
-      .patch("/reviews" + this.$route.params.id, params)
+      .patch("/reviews/" + this.currentReview.id, params)
       .then(function(response) {
-        router.push("/banks/" + this.bank.id);
+        // router.push("/products/" + this.product.id);
         })
         .catch(
           function(error) {
             this.errors = error.response.data.errors;
           }.bind(this)
         );
+      axios.get("/products/" + this.$route.params.id).then(function(response) {
+        //console.log(response.data);
+        this.product = response.data;
+      }.bind(this));
     },
 
     toggle: function() {
@@ -325,40 +343,17 @@ var BanksShowPage = {
         this.sortAscending = !this.sortAscending;
       }
       this.sortAttribute = attribute;
-    }
+    },
 
-    // setCurrentReview: function(id) {
-    //   axios.get("/reviews/" + id).then(function(response) {
-    //   console.log(response);
-    //     this.stars = response.data.stars;
-    //     this.text = response.data.text;
-    //     this.currentReview = response.data;
-    //   }.bind(this));
-
-    // },
-
-    // submEditRev: function() {
-    //   var params = {
-    //     product_id: this.product.id,
-    //     stars: this.stars,
-    //     text: this.text
-    //   };
-    //     //console.log(this.currentReview.id);
-    //   axios
-    //   .patch("/reviews/" + this.currentReview.id, params)
-    //   .then(function(response) {
-    //     // router.push("/products/" + this.product.id);
-    //     })
-    //     .catch(
-    //       function(error) {
-    //         this.errors = error.response.data.errors;
-    //       }.bind(this)
-    //     );
-    //   axios.get("/products/" + this.$route.params.id).then(function(response) {
-    //     //console.log(response.data);
-    //     this.product = response.data;
-    //   }.bind(this));
-    // }
+    setCurrentReview: function(id) {
+      axios.get("/reviews/" + id).then(function(response) {
+      console.log(response);
+        this.product_id = response.data.product_id;
+        this.stars = response.data.stars;
+        this.text = response.data.text;
+        this.currentReview = response.data;
+      }.bind(this));
+    }    
   },
   computed: {
     sortedReviews: function() {

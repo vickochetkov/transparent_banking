@@ -3,70 +3,240 @@
 <head>
   <meta charset="UTF-8">
   <title>Transparent Banking</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
+
+  <!-- Theme styles -->
+  <!-- Required css -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- Plugins css -->
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <!-- Template css -->
+  <link rel="stylesheet" href="css/style.min.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="index.css">
+
+                        <!-- Google Fonts and Icons Awesome -->
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Pirata+One" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="index.css">
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+                                      <!-- Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+              <!-- Vue.js Rails API Installation Cheat Sheet  -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.js"></script>
   <script src="index.js" defer></script>
+
 </head>
+
+
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="current-user">
-  <a class="navbar-brand" href="/#/">Transparent Banking</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/#/banks">All Banks <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/#/categories">All categories<span class="sr-only">(current)</span></a>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/#/signup">Signup</a>
-          <a class="dropdown-item" href="/#/login">Login</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/#/logout">Logout</a>
+  <!-- Top Header -->
+    <div class="top-header">
+      <div class="container-fluid limited">
+        <div class="row">
+          <div class="col">
+            <div class="d-flex justify-content-between">
+              <nav class="nav d-none d-lg-flex">
+                <a class="nav-link" href="/#/"><i class="fab fa-black-tie"></i>  Transparent Banking</a>
+              </nav>
+
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">person_outline</i>Your Account</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/#/signup">Signup</a>
+                    <a class="dropdown-item" href="/#/login">Login</a>
+                    <a class="dropdown-item" href="/#/logout">Logout</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/#/users/user">Your Profile<span class="sr-only">(current)</span></a>
+                  </div>
+                </li>
+              </ul>
+              </nav>
+            </div>
+          </div>
         </div>
-      </li>
+      </div>
+    </div>
+    <!-- /Top Header -->
 
-      <li class="nav-item active">
-        <a class="nav-link" href="/#/users/user" style="font-size: 0.5em; text-decoration: underline">My Profile<span class="sr-only">(current)</span></a>
+    <!-- Middle Header -->
+    <div class="middle-header" id="middle-header">
+      <div class="container-fluid limited position-relative">
 
-      </li>
-    </ul>
+        <div class="input-search-wrapper invisible">
+          <form action="#" method="post">
+            <input type="text" class="form-control" id="input-search" placeholder="Search" aria-label="Search">
+            <span class="rounded-circle bg-dark text-white toggle-search"><i class="small material-icons">close</i></span>
+            <input type="submit" hidden="hidden">
+          </form>
+        </div>
 
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+        <div class="row">
+
+          <div class="col-4 d-flex d-md-none align-items-center">
+            <a href="#" class="text-dark" data-toggle="modal" data-target="#menuModal"><i class="material-icons md-2">menu</i></a>
+          </div>
+          <div class="col-4 col-md-auto d-flex align-items-center justify-content-center justify-content-md-start">
+            <a href="/#/" class="logo">
+              <img src="img/men/man_n.png" alt="businessman" class="d-none d-md-block">
+            </a>
+          </div>
+          <div class="col d-none d-md-block position-static">
+            <nav class="navbar nav main-nav justify-content-center justify-content-md-start position-static p-0">
+              <a class="nav-link" href="/#/">HOME</a>
+              <a class="nav-link" href="/#/banks">BANKS</a>
+              <a class="nav-link" href="/#/categories">ALL CATEGORIES</a>
+
+              <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle no-caret" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">INFO</a>
+                <div class="dropdown-menu animate">
+                  <a class="dropdown-item" href="/#/login">Login</a>
+                  <a class="dropdown-item" href="/#/signup">Register</a>
+                  <div class="dropdown-submenu">
+                    <a href="#" class="dropdown-item d-flex justify-content-between">My Account <i class="material-icons md-1 mt-1">chevron_right</i></a>
+                    <div class="dropdown-menu animate">
+                      <a href="/#/users/user" class="dropdown-item">Profile</a>
+                      <a href="#" class="dropdown-item">Change Password</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+          <div class="col-4 col-md-auto d-flex align-items-center justify-content-end pl-0">
+            <nav class="nav nav-counter">
+              <a href="#" class="nav-link toggle-search"><img src="img/search.svg" alt="search"></a>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
 <br>
 
   <div id="vue-app">
+    <div class="container">
 
-    <router-view></router-view>
+      <router-view></router-view>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="container-fluid limited">
+        <div class="row">
+          <div class="col-sm-3 col-lg-2">
+            <h6>Download The App</h6>
+          </div>
+
+          <div class="col-sm-6 col-lg-2">
+            <div>
+              <a href="#">
+                <div class="media">
+                  <img src="img/apple.svg" alt="Apple Logo" height="30">
+                  <div class="media-body">
+                    <small>Download on the</small>
+                    <div>App Store</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-2">
+            <div>
+              <a href="#">
+                <div class="media">
+                  <img src="img/google-play.svg" alt="Google Play Logo" height="30">
+                  <div class="media-body">
+                    <small>Get it on</small>
+                    <div>Google Play</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-2">
+            <div>
+              <a href="#">
+                <div class="media">
+                  <img src="img/windows.svg" alt="Windows Logo" height="30">
+                  <div class="media-body">
+                    <small>Get it from</small>
+                    <div>Microsoft Store</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3">
+            <ul class="list-unstyled social-link">
+              <li><a href="#"><svg viewBox="0 0 24 24"><path d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" /></svg></a></li>
+              <li><a href="#"><svg viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg></a></li>
+              <li><a href="#"><svg viewBox="0 0 24 24"><path d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z" /></svg></a></li>
+              <li><a href="#"><svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" /></svg></a></li>
+              <li><a href="#"><svg viewBox="0 0 24 24"><path d="M6.18,15.64A2.18,2.18 0 0,1 8.36,17.82C8.36,19 7.38,20 6.18,20C5,20 4,19 4,17.82A2.18,2.18 0 0,1 6.18,15.64M4,4.44A15.56,15.56 0 0,1 19.56,20H16.73A12.73,12.73 0 0,0 4,7.27V4.44M4,10.1A9.9,9.9 0 0,1 13.9,20H11.07A7.07,7.07 0 0,0 4,12.93V10.1Z" /></svg></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Footer -->
+    <!-- Copyright -->
+    <div class="copyright">
+      Copyright © 2018 Transparent Banking All right reserved
+    </div>
+    <!-- /Copyright -->
+
+    <a href="#top" class="back-top text-center" id="back-top">
+      <i class="material-icons">expand_less</i>
+    </a>
 
   </div>
+
+  <!-- Required js -->
+  <script src="js/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/typeahead.bundle.min.js"></script>
+
+  <!-- Plugins js -->
+  <script src="js/swiper.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+
+  <!-- Template JS -->
+  <script src="js/script.min.js"></script>
+
 </body>
 </html>
 
 <template id="home-page">
-  <div class="vue-component body-width" id="p1">
+  <div class="vue-component" id="p1">
 
-      <h1 class="text-center">WELCOME!</h1>
+
+      <div class="title">
+        <span>WELCOME!</span>
+      </div>
+
 
       <div class="card-deck also">
         <div class="card">
@@ -86,7 +256,9 @@
     </div>
 
     <br>
-    <h1 class="text-center"> Want to choose Bank Service?</h1>
+    <div class="title">
+      <span>Want to choose Bank Service?</span>
+    </div>
     <br>
 
     <div class="card-deck also">
@@ -97,139 +269,153 @@
       </div>
     </div>
 
+
+    <div id="p2">
     <br>
-      <hr class="seprt">
     <br>
-
-    <div class="card-deck also" id="p2">
-      <div class="card">
-        <div class="container">
-
-        </div>
-        <div class="card-body">
-          <a href="#p3"><h5 class="card-title text-center"> Checking Accounts</h5>
-          <h5 class="card-title text-center">Debit Cards</h5></a>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">
-            <div class="inline-block">
-
+    <br>
+    <br>
+    <br>
+    <br>
+      <div class="title">
+        <span>What kind of service are you looking for?</span>
+      </div>
+      <br>
+        <div class="card-deck also">
+          <div class="card">
+            <div class="container">
 
             </div>
-          </small>
+            <div class="card-body">
+              <a href="#p3"><h5 class="card-title text-center"> Checking Accounts</h5>
+              <h5 class="card-title text-center">Debit Cards</h5></a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <div class="inline-block">
 
-        </div>
-      </div>
 
-      <div class="card">
-        <div class="container">
-
-       </div>
-        <div class="card-body">
-          <a href="#p4"><h5 class="card-title text-center"> Savings Accounts</h5>
-          <h5 class="card-title text-center">Time Accounts</h5></a>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">
-            <div class="inline-block">
-
+                </div>
+              </small>
 
             </div>
-          </small>
+          </div>
+
+          <div class="card">
+            <div class="container">
+
+           </div>
+            <div class="card-body">
+              <a href="#p4"><h5 class="card-title text-center"> Savings Accounts</h5>
+              <h5 class="card-title text-center">Time Accounts</h5></a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <div class="inline-block">
+
+
+                </div>
+              </small>
+
+            </div>
+          </div>
 
         </div>
+
+        <div class="card-deck also">
+          <div class="card">
+            <div class="container">
+
+           </div>
+            <div class="card-body">
+              <a href="#p5"><h5 class="card-title text-center">Credit Cards</h5></a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <div class="inline-block">
+
+
+                </div>
+              </small>
+
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="container">
+
+           </div>
+            <div class="card-body">
+              <a href="#p6"><h5 class="card-title text-center">Loans</h5></a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <div class="inline-block">
+
+
+                </div>
+              </small>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="card-deck also">
+          <div class="card">
+            <div class="container">
+
+           </div>
+            <div class="card-body">
+              <a href="#"><h5 class="card-title text-center">Foreign Exchange</h5></a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <div class="inline-block">
+
+
+                </div>
+              </small>
+
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="container">
+
+           </div>
+            <div class="card-body">
+              <a href="/#/categories"><h5 class="card-title text-center">Show Me All the Categories</h5></a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <div class="inline-block">
+
+
+                </div>
+              </small>
+
+            </div>
+          </div>
+        </div>
+
+    <a href="#top"><i class="material-icons">expand_less</i></a>
+
+    <br>
+  </div>
+
+  <div id="p3">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+      <div class="title">
+        <span>Checking Accounts and Debit Cards</span>
       </div>
-
-    </div>
-
-
-
 
     <div class="card-deck also">
-      <div class="card">
-        <div class="container">
-
-       </div>
-        <div class="card-body">
-          <a href="#p5"><h5 class="card-title text-center">Credit Cards</h5></a>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">
-            <div class="inline-block">
-
-
-            </div>
-          </small>
-
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="container">
-
-       </div>
-        <div class="card-body">
-          <a href="#p6"><h5 class="card-title text-center">Loans</h5></a>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">
-            <div class="inline-block">
-
-
-            </div>
-          </small>
-
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="card-deck also">
-      <div class="card">
-        <div class="container">
-
-       </div>
-        <div class="card-body">
-          <a href="#"><h5 class="card-title text-center">Foreign Exchange</h5></a>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">
-            <div class="inline-block">
-
-
-            </div>
-          </small>
-
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="container">
-
-       </div>
-        <div class="card-body">
-          <a href="/#/categories"><h5 class="card-title text-center">Show Me All the Categories</h5></a>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">
-            <div class="inline-block">
-
-
-            </div>
-          </small>
-
-        </div>
-      </div>
-    </div>
-
-    <a href="#p1"><h6>Top</h6></a>
-    
-    <br>
-      <hr class="seprt">
-    <br>
-
-    <div class="card-deck also" id="p3">
       <div class="card">
         <div class="container">
 
@@ -310,15 +496,23 @@
         </div>
       </div>
 
-    </div>    
+    </div>
 
-    <a href="#p1"><h6>Top</h6></a>
-
+    <a href="#top"><i class="material-icons">expand_less</i></a>
     <br>
-      <hr class="seprt">
-    <br>
+  </div>
 
-    <div class="card-deck also" id="p4">
+  <div id="p4">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+      <div class="title">
+        <span>Savings and Time Accounts</span>
+      </div>
+
+    <div class="card-deck also">
       <div class="card">
         <div class="container">
 
@@ -399,15 +593,23 @@
         </div>
       </div>
 
-    </div>    
+    </div>
 
-    <a href="#p1"><h6>Top</h6></a>
-
+    <a href="#top"><i class="material-icons">expand_less</i></a>
     <br>
-      <hr class="seprt">
-    <br>
+  </div>
 
-    <div class="card-deck also" id="p5">
+  <div id="p5">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+      <div class="title">
+        <span>Credit Cards</span>
+      </div>
+
+    <div class="card-deck also">
       <div class="card">
         <div class="container">
 
@@ -571,15 +773,23 @@
           </small>
         </div>
       </div>
-    </div>                  
+    </div>
 
-    <a href="#p1"><h6>Top</h6></a>
-
+    <a href="#top"><i class="material-icons">expand_less</i></a>
     <br>
-      <hr class="seprt">
-    <br>
+  </div>
 
-    <div class="card-deck also" id="p6">
+  <div id="p6">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="title">
+      <span>Loans</span>
+    </div>
+
+    <div class="card-deck also">
       <div class="card">
         <div class="container">
 
@@ -653,169 +863,217 @@
         </div>
       </div>
 
-    </div>    
+    </div>
 
-    <a href="#p1"><h6>Top</h6></a>    
-
+    <a href="#top"><i class="material-icons">expand_less</i></a>
     <br>
-      <hr class="seprt">
     <br>
-
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
 
   </div>
 </template>
 
 <template id="banks-index-page">
-  <div class="vue-component body-width">
+  <div class="vue-component">
 
-    <h1 class="text-center">Banks Rating</h1><br>
+    <div class="title">
+      <span>Banks Rating</span>
+    </div>
 
-      <div>
-        <button v-on:click="setSortAttribute('rating')">Sort by Rating</button>
-        <button v-on:click="setSortAttribute('title')">Sort by Title</button>
+    <!-- Sorting Bar -->
+    <div class="row mb-3 border pt-2 px-3 rounded no-gutters">
+      <div class="mb-2 col-12 col-sm-8 text-center text-sm-left">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Action">
+          <button class="btn btn-theme btn-sm float-left" v-on:click="setSortAttribute('rating')">Sort by Rating</button>
+          <button class="btn btn-outline-theme" v-on:click="setSortAttribute('title')" data-toggle="tooltip" data-placement="top" title="">Sort by Title</button>
+        </div>
+
+        <!-- <div class="btn-group btn-group-sm" role="group" aria-label="Action">
+          <button class="btn btn-theme" v-on:click="setSortAttribute('rating')">Sort by Rating</button>
+
+          <button class="btn btn-outline-theme show-quickview d-none d-md-inline-block" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="material-icons">zoom_in</i></button>
+          <button class="btn btn-outline-theme" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Compare"><i class="material-icons">compare_arrows</i></button>
+          <button class="btn btn-outline-theme" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist"><i class="material-icons">favorite_border</i></button>
+        </div>
+ -->
+
       </div>
-      <br>
+      <div class="mb-2 col-12 col-sm-4 text-center text-sm-right">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a class="btn btn-outline-theme btn-sm" href="#" role="button"><i class="material-icons">apps</i></a>
+          <a class="btn btn-theme btn-sm" href="#" role="button"><i class="material-icons">list</i></a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div id="banks" v-for="bank in sortedBanks" class="row" v-bind:key="bank.id">
 
-      <div id="banks" v-for="bank in sortedBanks" class="row" v-bind:key="bank.id">
-        <div class="col-lg-2">
-          <a v-bind:href="bank.url" target="_blank"><img class="small-img" :src="bank.brand_img_url" alt="Bank brand image"></a>
-        </div>
-        <div class="col-lg-4 inline-block">
-          <h4><a :href="'/#/banks/' + bank.id">{{ bank.title }}</a></h4>
-        </div>
-        <div class="col-lg-3">
-          <div class="inline-block">
-            <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
-            <span> {{ bank.rating }}</span>
-            <span class="ghost">|</span>
-            <span class="fa-layers fa-fw" style="font-size:4em; color:#007ee5">
-                <i class="far fa-comments"></i>
-                <span style="color:black" class="fa-layers-counter">{{ bank.review_count }}</span>
-            </span>
+      <div class="media hover-style media-list">
+        <div class="row">
+          <div class="col-lg-4">
+            <div>
+            <a v-bind:href="bank.url" target="_blank"><img class="small-img" :src="bank.brand_img_url" alt="Bank brand image"></a>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="media-body">
+              <a :href="'/#/banks/' + bank.id" class="h5">{{ bank.title }}</a>
+              <div class="inline-block d-flex">
+              <span style="font-size:1em; color:Gold"><i class="fas fa-trophy"></i></span>
+              <span> {{ bank.rating }}</span>
+              <span class="ghost">|</span>
+                <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
+                  <i class="far fa-comments"></i>
+                  <span style="color:black" class="fa-layers-counter">{{ bank.review_count }}</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <button type="button" class="btn btn-theme btn-sm float-right">Leave Your Review <span class="badge badge-light">14</span>
+            <span class="sr-only">Total reviews</span>
           </div>
         </div>
-        <div class="col-lg-1">
-          <button type="button" class="btn btn-primary" style="font-size:0.7em color=Black">Leave your review <span class="badge badge-light">14</span>
-            <span class="sr-only">Total reviews</span>
-          </button>
-        </div>
       </div>
+    </div>
+   </div>
   </div>
 </template>
 
 <template id="categories-show-page">
-  <div class="vue-component body-width">
+  <div class="vue-component">
 
-    <h2 class="text-center">{{ category.title }}</h2>
+    <div class="title">
+      <span>{{ category.title }}</span>
+    </div>
 
-    <div>
-      <button v-on:click="setSortAttribute('name')">Sort by Name</button>
-      <button v-on:click="setSortAttribute('rating')">Sort by Rating</button>
+    <!-- Sorting Bar -->
+    <div class="row mb-3 border pt-2 px-3 rounded no-gutters">
+      <div class="mb-2 col-12 col-sm-8 text-center text-sm-left">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Action">
+          <button class="btn btn-theme btn-sm float-left" v-on:click="setSortAttribute('name')">Sort by Name</button>
+          <button class="btn btn-outline-theme" v-on:click="setSortAttribute('rating')" data-toggle="tooltip" data-placement="top" title="">Sort by Rating</button>
+        </div>
+      </div>
+      <div class="mb-2 col-12 col-sm-4 text-center text-sm-right">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a class="btn btn-outline-theme btn-sm" href="#" role="button"><i class="material-icons">apps</i></a>
+          <a class="btn btn-theme btn-sm" href="#" role="button"><i class="material-icons">list</i></a>
+        </div>
+      </div>
     </div>
     <br>
 
       <div v-for="product in sortedProducts" class="row" v-bind:key="product.id">
-        <div class="col-lg-2">
 
-          <a v-bind:href="product.bank.bank_url" target="_blank"><img class="small-img" :src="product.bank.brand_img_url" alt="Bank brand image"></a>
 
-        </div>
-        <div class="col-lg-4 inline-block">
-          <h4><a :href="'/#/products/' + product.id">{{ product.name }}</a></h4>
-          <p><a :href="'/#/banks/' + product.bank.id">{{ product.bank.title }}</a></p>
-        </div>
-        <div class="col-lg-3">
-          <div class="inline-block">
-            <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
-            <span>{{ product.rating }}</span>
-            <span class="ghost">|</span>
-            <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
-                <i class="far fa-comments"></i>
-                <span style="color:black" class="fa-layers-counter">{{product.review_count}}</span>
-            </span>
+        <div class="media hover-style media-list">
+          <div class="row">
+            <div class="col-lg-4">
+              <div>
+              <a v-bind:href="product.bank.bank_url" target="_blank"><img class="small-img" :src="product.bank.brand_img_url" alt="Bank brand image"></a>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="media-body">
+                <h4><a :href="'/#/products/' + product.id">{{ product.name }}</a></h4>
+                <p><a :href="'/#/banks/' + product.bank.id">{{ product.bank.title }}</a></p>
+                <div class="inline-block d-flex">
+                <span style="font-size:1em; color:Gold"><i class="fas fa-trophy"></i></span>
+                <span> {{ product.rating }}</span>
+                <span class="ghost">|</span>
+                  <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
+                    <i class="far fa-comments"></i>
+                    <span style="color:black" class="fa-layers-counter">{{ product.review_count }}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <button type="button" class="btn btn-theme btn-sm float-right">Leave Your Review <span class="badge badge-light">14</span>
+              <span class="sr-only">Total reviews</span>
+            </div>
           </div>
         </div>
-        <div class="col-lg-1">
-          <button type="button" class="btn btn-primary .btn-sm" style="font-size:0.7em color=Black">Leave your review <span class="badge badge-light">14</span>
-            <span class="sr-only">Total reviews</span>
-          </button>
-        </div>
       </div>
-
     <a href="/#/categories">Back to all categories</a>
-
   </div>
 </template>
 
 <template id="products-show-page">
-  <div class="vue-component body-width">
+  <div class="vue-component">
 
-    <h2 class="text-center">{{ product.name }}</h2>
-    <h5 class="text-center"><a :href="'/#/banks/' + product.bank_id">{{ product.bank.title }}</a></h5>
+    <h2 class="new">{{ product.name }}</h2>
+    <h3 class="text-center"><a :href="'/#/banks/' + product.bank_id">{{ product.bank.title }}</a></h3>
+    <br>
+    <br>
 
-      <div class="row">
-        <div class="col-lg-7 inline-block">
-          <h4>Information:</h4>
-          <p>{{ product.info }}</p>
-        </div>
-        <div class="col-lg-2">
-          <div class="inline-block">
-            <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
-            <span> {{ product.avrg_stars }} </span>
-            <span class="ghost">|</span>
-            <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
-                <i class="far fa-comments"></i>
-                <span style="color:black" class="fa-layers-counter">{{ product.review_count }}</span>
-            </span>
-            <a href="#newReview" v-if="current_user" style="color:white"><button type="button" class="btn btn-primary .btn-sm" style="font-size:0.6em" v-on:click="toggle()">Leave your review <span class="badge badge-light"> {{ current_user.total_reviews }}</span></a>
-            <span class="sr-only">Total reviews</span>
-          </button>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <a v-bind:href="product.bank.url" target="_blank"><img class="small-img" :src="product.bank.brand_img_url" alt="Bank brand image"></a>
-        </div>
-      </div>
+    <div class="media hover-style media-list">
+        <div class="row">
+          <div class="col-lg-7 inline-block">
 
-      <div class="row">
-        <div class="col-lg-2 inline-block">
-
-        </div>
-        <div class="col-lg-8 inline-block pros-cons">
-          <div class="inline-block">
+            <div class="title">
+              <span>Description:</span>
+            </div>
+            <p>{{ product.info }}</p>
+            <div class="title">
+              <span>Pros and Cons:</span>
+            </div>
             <div>
               <span style="font-size:2em; color:Gold"><i class="far fa-smile"></i></span>
               <ul class="square">
-
                 <li>Created by an experienced developer in the field</li>
                 <li>Native experience and clean user interface</li>
                 <li>A native OS X app which is available through Mac App Store. The UI is fast, responsive and integrates seamlessly with the OS.</li>
               </ul>
             </div>
-            <div>
+             <div>
               <span style="font-size:2em; color:Tomato"><i class="far fa-frown"></i></span>
               <ul class="square">
-
                 <li>No multiple query tabs in the free trial version</li>
                 <li>Commercial</li>
                 <li>To be fair, multiple windows / tabs IS a feature. It's just part of the paid version.</li>
               </ul>
-
             </div>
-            </span>
-          </div>
-        </div>
-        <div class="col-lg-2 inline-block">
 
+          </div>
+          <div class="col-lg-2">
+            <div class="inline-block">
+              <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
+              <span>{{ product.avrg_stars }}</span>
+              <span class="ghost">|</span>
+              <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
+                  <i class="far fa-comments"></i>
+                  <span style="color:black" class="fa-layers-counter">{{ product.review_count }}</span>
+              </span>
+              <a href="#nReview" style="color:white"><button type="button" class="btn btn-theme btn-sm float-left" style="font-size:0.8em" v-on:click="toggle()">Leave Your Review <span class="badge badge-light">{{ current_user.total_reviews }}</span v-if="current_user" class="badge badge-light"></button></a>
+              <span class="sr-only">Total reviews</span>
+              <br>
+              <br>
+              <br>
+              <a href="#reviews" style="color:white"><button type="button" class="btn btn-theme btn-sm float-left" style="font-size:0.8em">See Reviews</button></a>
+            </div>
+          </div>
+          <div class="col-lg-2">
+            <a v-bind:href="product.bank.url" target="_blank"><img class="small-img" :src="product.bank.brand_img_url" alt="Bank brand image"></a>
+          </div>
         </div>
       </div>
 
-                <!-- hidden Show Review Page.  -->
+      <!-- Create singleReview Page. It'll be hidden  -->
       <div class="hidden" id="newReview">
 
           <br>
-            <hr class="seprt">
           <br>
+          <br>
+          <br>
+          <div class="title">
+            <span>Create New Review:</span>
+          </div>
 
           <div class="card also">
 
@@ -826,7 +1084,7 @@
               </div>
               <div class="col-lg-1">
               </div>
-              <div class="col-lg-5" v-if="current_user">
+              <div v-if="current_user" class="col-lg-5">
                 <p>Will be posted publicly as <strong>{{ current_user.full_name }}</strong> | <a href="/#/logout">(not You?)</a></p>
               </div>
             </div>
@@ -846,42 +1104,33 @@
                 <textarea class="form-control" v-model="text" rows="4" placeholder="Enter Your Comment Here"></textarea>
               </div>
 
-              <div class="row">
-                <div class="col-lg-2 inline-block">
-                  <button class="btn btn-primary" style="width: 100%" v-on:click="submit()">Add Review</button>
-                </div>
-                <div class="col-lg-2 inline-block">
-                  <button class="btn btn-primary" style="width: 100%" v-on:click="toggle()">Cansel</button>
-                </div>
-                <div class="col-lg-7 inline-block">
-                </div>
+              <div class="btn-group btn-group-sm" role="group" aria-label="Action">
+                <button class="btn btn-theme btn-sm float-left" v-on:click="submit()">Add Review</button>
+                <button class="btn btn-outline-theme" v-on:click="toggle()" data-toggle="tooltip" data-placement="top" title="">Cansel</button>
               </div>
-
           </div>
-        </div> <!-- Show Review Page. hidden part end-->
+        </div> <!-- The End of Create Review Page. hidden part end-->
 
-      <br>
-        <hr class="seprt">
-      <br>
-
-      <h4 class="text-center">See also:</h4>
+     <div class="title">
+      <span>See also:</span>
+    </div>    
 
         <div class="card-deck also">
           <div class="card">
             <div class="container">
-            <div><a :href="product_also1.bank.url" target="_blank"><img class="card-img-top" :src="product_also1.bank.brand_img_url" alt="Card image cap" style="width:50%"></a></div>
+            <div><a :href="topProducts()[0].bank.url" target="_blank"><img class="card-img-top" :src="topProducts()[1].bank.brand_img_url" alt="Card image cap" style="width:50%"></a></div>
              <div>
               <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
-            <span>{{ product_also1.avrg_stars }}</span>
+            <span>{{ topProducts()[0].avrg_stars }}</span>
             <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
                 <i class="far fa-comments"></i>
-                <span style="color:black" class="fa-layers-counter">{{ product_also1.review_count }}</span>
+                <span style="color:black" class="fa-layers-counter">{{ topProducts()[0].review_count }}</span>
             </span>
              </div>
            </div>
             <div class="card-body">
-              <h5 class="card-title text-center"><a :href="'/#/products/' + product_also1.id">{{ product_also1.name }}</a></h5>
-              <h5 class="text-center"><a :href="'/#/banks/' + product_also1.bank_id">{{ product_also1.bank.title }}</a></h5>
+              <h5 class="card-title text-center"><a :href="'/#/products/' + topProducts()[0].id">{{ topProducts()[0].name }}</a></h5>
+              <h5 class="text-center"><a :href="'/#/banks/' + topProducts()[0].bank_id">{{ topProducts()[0].bank.title }}</a></h5>
             </div>
             <div class="card-footer">
               <small class="text-muted">
@@ -907,19 +1156,19 @@
 
            <div class="card">
             <div class="container">
-            <div><a :href="product_also2.bank.url" target="_blank"><img class="card-img-top" :src="product_also2.bank.brand_img_url" alt="Card image cap" style="width:50%"></a></div>
+            <div><a :href="topProducts()[1].bank.url" target="_blank"><img class="card-img-top" :src="topProducts()[1].bank.brand_img_url" alt="Card image cap" style="width:50%"></a></div>
              <div>
               <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
-            <span>{{ product_also2.avrg_stars}}</span>
+            <span>{{ topProducts()[1].avrg_stars}}</span>
             <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
                 <i class="far fa-comments"></i>
-                <span style="color:black" class="fa-layers-counter">{{ product_also2.review_count}}</span>
+                <span style="color:black" class="fa-layers-counter">{{ topProducts()[1].review_count}}</span>
             </span>
              </div>
            </div>
             <div class="card-body">
-              <h5 class="card-title text-center"><a :href="'/#/products/' + product_also2.id">{{ product_also2.name }}</a></h5>
-              <h5 class="text-center"><a :href="'/#/banks/' + product_also2.bank_id">{{ product_also2.bank.title }}</a></h5>
+              <h5 class="card-title text-center"><a :href="'/#/products/' + topProducts()[1].id">{{ topProducts()[1].name }}</a></h5>
+              <h5 class="text-center"><a :href="'/#/banks/' + topProducts()[1].bank_id">{{ topProducts()[1].bank.title }}</a></h5>
             </div>
             <div class="card-footer">
               <small class="text-muted">
@@ -945,15 +1194,28 @@
 
         </div>
 
-    <br>
-      <hr class="seprt">
-    <br>
-                        <!-- REVIEWs -->
-        <h4 class="text-center" id="reviewsShow">Reviews:</h4>
+          <!-- REVIEWS: -->
+        <div class="title" id="reviews">
+        <br>
+        <br>
+        <br>
+        <br>
+          <span>Reviews:</span>
+        </div>
 
-        <div>
-          <button v-on:click="setSortAttribute('stars')">Sort by Rating</button>
-          <button v-on:click="setSortAttribute('created_at')">Sort by Date</button>
+        <div class="row mb-3 border pt-2 px-3 rounded no-gutters">
+          <div class="mb-2 col-12 col-sm-8 text-center text-sm-left">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Action">
+              <button class="btn btn-theme btn-sm float-left" v-on:click="setSortAttribute('stars')">Sort by Rating</button>
+              <button class="btn btn-outline-theme" v-on:click="setSortAttribute('created_at')" data-toggle="tooltip" data-placement="top" title="">Sort by Date</button>
+            </div>
+          </div>
+          <div class="mb-2 col-12 col-sm-4 text-center text-sm-right">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a class="btn btn-outline-theme btn-sm" href="#" role="button"><i class="material-icons">apps</i></a>
+              <a class="btn btn-theme btn-sm" href="#" role="button"><i class="material-icons">list</i></a>
+            </div>
+          </div>
         </div>
         <br>
 
@@ -985,8 +1247,12 @@
               <p> {{ review.text }}</p>
             </div>
 
-            <div v-if="current_user && review.user.id == current_user.id">
+            <!-- <div v-if="current_user && review.user.id == current_user.id">
               <a href="#editReview"><button type="button" class="btn btn-primary .btn-sm" style="width: 20%" v-on:click="setCurrentReview(review.id)" data-toggle="modal" data-target="#updReview">Edit</button></a>
+            </div> -->
+
+            <div v-if="current_user && review.user.id == current_user.id">
+              <button type="button" class="btn btn-theme btn-sm float-left" style="width: 20%" v-on:click="setCurrentReview(review.id)" data-toggle="modal" data-target="#updReview">Edit</button>
             </div>
 
 
@@ -994,7 +1260,7 @@
         </div>
 
 
-        <!-- Edit-Delite Review Modal -->
+        <!-- Edit Review Modal -->
         <div class="modal fade" id="updReview" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -1011,7 +1277,7 @@
                 <div class="row">
                   <div class="col-lg-6">
                     <h3 class="text-left">{{product.name}}</h3>
-
+                    <h6 class="text-left">{{product.bank.title}}</h6>
                   </div>
                   <div class="col-lg-1">
                   </div>
@@ -1039,15 +1305,10 @@
                </div>
               </div>
               <div class="modal-footer">
-                <div class="row">
-                  <div class="col-lg-2 inline-block">
-                    <button class="btn btn-primary" style="width: 100%" v-on:click="submEditRev()" data-dismiss="modal">Submit</button>
-                  </div>
-                  <div class="col-lg-2 inline-block">
-                    <button class="btn btn-secondary" style="width: 100%" data-dismiss="modal">Cansel</button>
-                  </div>
-                   <div class="col-lg-7 inline-block">
-                  </div>
+
+                <div class="btn-group btn-group-sm" role="group" aria-label="Action">
+                  <button class="btn btn-theme btn-sm float-left" v-on:click="submEditRev()" data-dismiss="modal">Submit</button>
+                  <button class="btn btn-outline-theme" data-placement="top" data-dismiss="modal">Cansel</button>
                 </div>
               </div>
             </div>
@@ -1061,41 +1322,23 @@
 </template>
 
 <template id="banks-show-page">
-  <div class="vue-component body-width">
+  <div class="vue-component">
 
-    <h2 class="text-center">{{ bank.title }}</h2>
+    <h2 class="new">{{ bank.title }}</h2>
+    <br>
+    <br>
 
-      <div class="row">
-        <div class="col-lg-6 inline-block">
-          <h4>Description:</h4>
-          <p>{{ bank.info }}</p>
-        </div>
-        <div class="col-lg-3">
-          <div class="inline-block">
-            <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
-            <span>{{ bank.rating }}</span>
-            <span class="ghost">|</span>
-            <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
-                <i class="far fa-comments"></i>
-                <span style="color:black" class="fa-layers-counter">{{ bank.review_count }}</span>
-            </span>
-            <a href="#nReview" style="color:white"><button type="button" class="btn btn-primary .btn-sm" style="font-size:0.6em" v-on:click="toggle()">Leave your review <span v-if="current_user" class="badge badge-light"> {{ current_user.total_reviews }}</span></a>
-            <span class="sr-only">Total reviews</span>
+      <div class="media hover-style media-list">
+        <div class="row">
+          <div class="col-lg-7 inline-block">
 
-          </button>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <a v-bind:href="bank.url" target="_blank"><img class="small-img" :src="bank.brand_img_url" alt="Bank brand image"></a>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-2 inline-block">
-
-        </div>
-        <div class="col-lg-8 inline-block pros-cons">
-          <div class="inline-block">
+            <div class="title">
+              <span>Description:</span>
+            </div>
+            <p>{{ bank.info }}</p>
+            <div class="title">
+              <span>Pros and Cons:</span>
+            </div>
             <div>
               <span style="font-size:2em; color:Gold"><i class="far fa-smile"></i></span>
               <ul class="square">
@@ -1104,7 +1347,7 @@
                 <li>A native OS X app which is available through Mac App Store. The UI is fast, responsive and integrates seamlessly with the OS.</li>
               </ul>
             </div>
-            <div>
+             <div>
               <span style="font-size:2em; color:Tomato"><i class="far fa-frown"></i></span>
               <ul class="square">
                 <li>No multiple query tabs in the free trial version</li>
@@ -1112,9 +1355,28 @@
                 <li>To be fair, multiple windows / tabs IS a feature. It's just part of the paid version.</li>
               </ul>
             </div>
+
           </div>
-        </div>
-        <div class="col-lg-2 inline-block">
+          <div class="col-lg-2">
+            <div class="inline-block">
+              <span style="font-size:2em; color:Gold"><i class="fas fa-trophy"></i></span>
+              <span>{{ bank.rating }}</span>
+              <span class="ghost">|</span>
+              <span class="fa-layers fa-fw" style="font-size:2em; color:#007ee5">
+                  <i class="far fa-comments"></i>
+                  <span style="color:black" class="fa-layers-counter">{{ bank.review_count }}</span>
+              </span>
+              <a href="#nReview" style="color:white"><button type="button" class="btn btn-theme btn-sm float-left" style="font-size:0.8em" v-on:click="toggle()">Leave Your Review <span class="badge badge-light">{{ current_user.total_reviews }}</span v-if="current_user" class="badge badge-light"></button></a>
+              <span class="sr-only">Total reviews</span>
+              <br>
+              <br>
+              <br>
+              <a href="#rev" style="color:white"><button type="button" class="btn btn-theme btn-sm float-left" style="font-size:0.8em">See Reviews</button></a>
+            </div>
+          </div>
+          <div class="col-lg-2">
+            <a v-bind:href="bank.url" target="_blank"><img class="small-img" :src="bank.brand_img_url" alt="Bank brand image"></a>
+          </div>
         </div>
       </div>
 
@@ -1122,8 +1384,12 @@
       <div class="hidden" id="nReview">
 
           <br>
-            <hr class="seprt">
           <br>
+          <br>
+          <br>
+          <div class="title">
+            <span>Create New Review:</span>
+          </div>
 
           <div class="card also">
 
@@ -1137,8 +1403,6 @@
                     <option v-for="product in bank.products"> {{ product.id + ' ' + product.name }}</option>
                   </datalist>
                 </form>
-
-
 
               </div>
               <div class="col-lg-1">
@@ -1163,84 +1427,16 @@
                 <textarea class="form-control" v-model="text" rows="4" placeholder="Enter Your Comment Here"></textarea>
               </div>
 
-              <div class="row">
-                <div class="col-lg-2 inline-block">
-                  <button class="btn btn-primary" style="width: 100%" v-on:click="submit()">Add Review</button>
-                </div>
-                <div class="col-lg-2 inline-block">
-                  <button class="btn btn-primary" style="width: 100%" v-on:click="toggle()">Cansel</button>
-                </div>
-                <div class="col-lg-7 inline-block">
-                </div>
+              <div class="btn-group btn-group-sm" role="group" aria-label="Action">
+                <button class="btn btn-theme btn-sm float-left" v-on:click="submit()">Add Review</button>
+                <button class="btn btn-outline-theme" v-on:click="toggle()" data-toggle="tooltip" data-placement="top" title="">Cansel</button>
               </div>
-
           </div>
         </div> <!-- The End of Show Review Page. hidden part end-->
 
-
-
-      <div class="hidden" id="editReview"> <!-- Edit-Delete Review Page. It'll be hidden  -->
-
-          <br>
-            <hr class="seprt">
-          <br>
-
-          <div class="card also">
-
-            <div class="row">
-              <div class="col-lg-6">
-                <h6 class="text-left" style="color:red">Your Review For:</h6>
-
-                <form class="form-inline">
-                  <input type="text" class="form-control" v-model="product_id" list="names" placeholder="Choose Bank Product">
-                  <datalist id="names">
-                    <option v-for="product in bank.products"> {{ product.id + ' ' + product.name }}</option>
-                  </datalist>
-                </form>
-              </div>
-              <div class="col-lg-1">
-              </div>
-              <div v-if="current_user" class="col-lg-5">
-                <p> Was posted as <strong>{{ current_user.full_name }}</strong> | <a href="/#/logout">(not You?)</a></p>
-              </div>
-            </div>
-
-              <ul>
-                <li class="text-danger" v-for="error in errors">{{ error }}</li>
-              </ul>
-
-              <div class="form-group">
-                <label>Rating:</label>
-
-                <input type="digit" class="form-control custom-select-sm" v-model="stars" placeholder="1...5" style="width: 6%">
-              </div>
-
-              <div class="form-group">
-                <label>Text:</label>
-                <textarea class="form-control" v-model="text" rows="4" placeholder="Edit Your Comment Here"></textarea>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-2 inline-block">
-                  <button class="btn btn-primary" style="width: 100%" v-on:click="submEditRev()">Submit</button>
-                </div>
-                <div class="col-lg-2 inline-block">
-                  <button class="btn btn-primary" style="width: 100%" v-on:click="toggleEditRev()">Cansel</button>
-                </div>
-                 <div class="col-lg-7 inline-block">
-                </div>
-              </div>
-
-          </div>
-        </div> <!-- Edit-Delete Review Page. hidden part end -->
-
-
-      <br>
-      <hr class="seprt">
-      <br>
-
-      <h4 class="text-center">Products:</h4>
-
+          <div class="title">
+        <span>Products:</span>
+      </div>
         <div class="card also">
           <div class="media">
             <div class="media-body" id="textbox">
@@ -1251,11 +1447,9 @@
           </div>
         </div>
 
-      <br>
-      <hr class="seprt">
-      <br>
-
-      <h4 class="text-center">See also:</h4>
+      <div class="title">
+        <span>See also:</span>
+      </div>
         <div class="card-deck also">
           <div class="card">
             <div class="container">
@@ -1333,18 +1527,32 @@
 
         </div>
 
-    <br>
-      <hr class="seprt">
-    <br>
-                        <!-- REVIEWS: -->
-        <h4 class="text-center">Reviews:</h4>
 
-        <div>          
-          <button v-on:click="setSortAttribute('stars')">Sort by Rating</button>
-          <button v-on:click="setSortAttribute('created_at')">Sort by Date</button>
+
+                        <!-- REVIEWS: -->
+        <div class="title" id="rev">
+        <br>
+        <br>
+        <br>
+        <br>
+          <span>Reviews:</span>
+        </div>
+
+        <div class="row mb-3 border pt-2 px-3 rounded no-gutters">
+          <div class="mb-2 col-12 col-sm-8 text-center text-sm-left">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Action">
+              <button class="btn btn-theme btn-sm float-left" v-on:click="setSortAttribute('stars')">Sort by Rating</button>
+              <button class="btn btn-outline-theme" v-on:click="setSortAttribute('created_at')" data-toggle="tooltip" data-placement="top" title="">Sort by Date</button>
+            </div>
+          </div>
+          <div class="mb-2 col-12 col-sm-4 text-center text-sm-right">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a class="btn btn-outline-theme btn-sm" href="#" role="button"><i class="material-icons">apps</i></a>
+              <a class="btn btn-theme btn-sm" href="#" role="button"><i class="material-icons">list</i></a>
+            </div>
+          </div>
         </div>
         <br>
-
         <div v-for="review in sortedReviews" v-bind:key="review.id">
           <div class="card also">
             <div class="media">
@@ -1372,16 +1580,18 @@
               <p> {{ review.text }}</p>
             </div>
 
-            <!-- <div v-if="current_user && review.user.id == current_user.id">
-              <a href="#editReview"><button type="button" class="btn btn-primary .btn-sm" style="width: 20%" v-on:click="setCurrentReview(review.id)" data-toggle="modal" data-target="#updReview">Edit</button></a>
-            </div> -->
-            
+            <div v-if="current_user && review.user.id == current_user.id">
+              <button type="button" class="btn btn-theme btn-sm float-left" style="width: 20%" v-on:click="setCurrentReview(review.id)" data-toggle="modal" data-target="#updateReview">Edit</button>
+            </div>
+
+            <!-- <button type="button" class="btn btn-theme btn-sm float-right">Leave Your Review <span class="badge badge-light">14</span> -->
+
             </div>
           </div>
         </div>
 
                     <!-- Edit Review Modal -->
-        <div class="modal fade" id="updReview" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="updateReview" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -1427,7 +1637,7 @@
               <div class="modal-footer">
                 <div class="row">
                   <div class="col-lg-2 inline-block">
-                    <button class="btn btn-primary" style="width: 100%" v-on:click="submEditRev()" data-dismiss="modal">Submit</button>
+                    <button class="btn btn-primary" style="width: 100%" v-on:click="subEditRev()" data-dismiss="modal">Submit</button>
                   </div>
                   <div class="col-lg-2 inline-block">
                     <button class="btn btn-secondary" style="width: 100%" data-dismiss="modal">Cansel</button>
@@ -1485,7 +1695,7 @@
     </div>
 
     <a href="/#/">Home</a>
-
+    <br>
   </div>
 </template>
 
@@ -1575,7 +1785,7 @@
 </template>
 
 <template id="signup-page">
-  <div class="vue-component">
+  <div class="vue-component" style="width: 100%; height:1000px">
 
     <div class="box-auth">
 
@@ -1629,7 +1839,7 @@
 </template>
 
 <template id="login-page">
-  <div class="vue-component">
+  <div class="vue-component" style="width: 100%; height:900px">
 
     <div class="box-auth">
 
@@ -1669,19 +1879,26 @@
 </template>
 
 <template id="categories-index-page">
-  <div class="vue-component body-width">
+  <div class="vue-component" style="height:1500px">
 
-    <br>
-    <h2 class="text-center">Bank Product Categories</h2>
-    <br>
-
-    <div class="text-center">
-      <button v-on:click="setSortAttribute('title')" style="width: 20%">Sort by Title</button>
+    <div class="title">
+      <span>Bank Product Categories</span>
     </div>
-    <br>    
+    <div class="row mb-3 border pt-2 px-3 rounded no-gutters">
+      <div class="mb-2 col-12 col-sm-8 text-center text-sm-left">
+        <button type="button" class="btn btn-theme btn-sm float-left" v-on:click="setSortAttribute('title')">Sort by Title</button>
+      </div>
+      <div class="mb-2 col-12 col-sm-4 text-center text-sm-right">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a class="btn btn-outline-theme btn-sm" href="#" role="button"><i class="material-icons">apps</i></a>
+          <a class="btn btn-theme btn-sm" href="#" role="button"><i class="material-icons">list</i></a>
+        </div>
+      </div>
+    </div>
+    <br>
 
       <div v-for="category in sortedCategories" v-bind:key="category.id">
-        <h5 class="text-center"><a :href="'/#/categories/' + category.id">{{category.title }}</a></h5>
+        <h5 class="text-left"><i class="material-icons" style="color:#009688; font-size:18px">star</i><a :href="'/#/categories/' + category.id">{{"   " + category.title }}</a></h5>
       </div>
     <br>
     <a href="/#/">Home</a>

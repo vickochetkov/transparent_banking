@@ -4,16 +4,16 @@ nav {
 }
 
 body {    
-  font-family: Impact, sans-serif;
-  #color: white;
+  font-family: 'Oswald', Impact, sans-serif !important;
+  color: rgb(102, 102, 102) !important;
   #background-image: url('Rain.jpg');
 }
 
 .body-width {
-  width: 1000px;
+  width: 1100px;
   height: auto;
   margin: auto;
-  border: 3px solid #28a745;
+  border: 2px solid #009688;
 
 }
 
@@ -21,13 +21,13 @@ body {
   max-width: 800px;
   height: 500px;
   margin: auto;
-  #Sborder: 1px solid #007bff;
+  #Sborder: 1px solid #009688;
 
 }
 
 ul.square {
   list-style-type: square;
-  font-family: Tahoma, Monotipe;
+  font-family: Tahoma, Monotipe !important;
   font-size:0.8em;
   width: 650px; 
 
@@ -107,7 +107,7 @@ img.avatar {
 
 .small-img {
     display:block;
-    width: 150px;
+    width: 200px;
   }
 
 .middle-img {
@@ -155,11 +155,19 @@ hr.seprt {
 h3.new {
   display:block;  
   padding:15px;
-  background:#1ab188;
+  background:#009688;
   color:#ffffff;
   font-size:20px;  
   width:100%;
   text-align:center;  
+}
+
+h2.new {
+  display:block; 
+  color:black;
+  font-size:40px;  
+  width:100%;
+  text-align:center;
 }
 
 .field-wrap {
@@ -174,7 +182,7 @@ h3.new {
   font-weight: bold;
   text-transform:uppercase;
   letter-spacing:.1em;
-  background:#1ab188;
+  background:#009688;
   color: #ffffff;
   transition:all.5s ease;
   cursor: pointer;    
@@ -185,7 +193,7 @@ h3.new {
   padding:5px 0;
   font-size:2rem;
   font-weight: bold;  
-  background:#1ab188;
+  background:#009688;
   color: #ffffff;
   transition:all.5s ease;
   cursor: pointer;
@@ -201,11 +209,11 @@ h3.new {
 .forgot {
   margin-top:-20px;
   text-align:center;
-  color:#1ab188;
+  color:#009688;
 }
 
 a.new {
-  color: #1ab188;  
+  color: #009688;  
 }
 
 .rating {
