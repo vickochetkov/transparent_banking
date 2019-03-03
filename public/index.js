@@ -222,7 +222,7 @@ var ProductsShowPage = {
     topProducts: function() {
       var categoryArr = this.products.filter(b_product => b_product.category_id === this.product.category_id); 
       categoryArr.sort((a, b) => a.rating - b.rating);
-        console.log(categoryArr[0].rating, categoryArr[1].rating)
+        //console.log(categoryArr[0].rating, categoryArr[1].rating)
         if (categoryArr[0].id === this.product.id) {
           return result = [categoryArr[1], categoryArr[2]];
         } else if (categoryArr[1].id === this.product.id) {

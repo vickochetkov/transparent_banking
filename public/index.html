@@ -240,36 +240,24 @@
 
       <div class="card-deck also">
         <div class="card">
-
           <h5 class="text-center">Our friendly society is very glad to meet you here and share our own experience to make everyday Banking realy transparent and fair.</h5>
-
         </div>
-
         <div class="card">
-
           <a href="/#/signup"><h6 class="text-center" style="color:#28a745">Join us!</h6>
           <h6 class="text-center" style="color:#28a745">Share Your Experience!</h6>
           <h6 class="text-center" style="color:#28a745">Every voice matters</h6></a>
-
         </div>
-
-    </div>
-
-    <br>
-    <div class="title">
-      <span>Want to choose Bank Service?</span>
-    </div>
-    <br>
-
-    <div class="card-deck also">
-      <div class="card">
-
-        <a href="#p2"><h1 class="text-center" style="color:red">START!</h1>
-        <h3 class="text-center">Make your choice</h3></a>
       </div>
+    <br>
+
+    <div>
+      <!-- <p class="forgot" ><a class="new" href="/#/login">Allready Signed Up?</a></p> -->
+      <a class="forgot" href="#p2"><p>Click on the picture to start exploring</p></a>
+      <a href="#p2"><img src="images/33.jpg" class="img-thumbnail big-img" alt="quote"></a>      
     </div>
 
-
+    <br>
+   
     <div id="p2">
     <br>
     <br>
@@ -891,16 +879,6 @@
           <button class="btn btn-theme btn-sm float-left" v-on:click="setSortAttribute('rating')">Sort by Rating</button>
           <button class="btn btn-outline-theme" v-on:click="setSortAttribute('title')" data-toggle="tooltip" data-placement="top" title="">Sort by Title</button>
         </div>
-
-        <!-- <div class="btn-group btn-group-sm" role="group" aria-label="Action">
-          <button class="btn btn-theme" v-on:click="setSortAttribute('rating')">Sort by Rating</button>
-
-          <button class="btn btn-outline-theme show-quickview d-none d-md-inline-block" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="material-icons">zoom_in</i></button>
-          <button class="btn btn-outline-theme" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Compare"><i class="material-icons">compare_arrows</i></button>
-          <button class="btn btn-outline-theme" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist"><i class="material-icons">favorite_border</i></button>
-        </div>
- -->
-
       </div>
       <div class="mb-2 col-12 col-sm-4 text-center text-sm-right">
         <div class="btn-group" role="group" aria-label="Basic example">
@@ -1050,7 +1028,7 @@
                   <i class="far fa-comments"></i>
                   <span style="color:black" class="fa-layers-counter">{{ product.review_count }}</span>
               </span>
-              <a href="#nReview" style="color:white"><button type="button" class="btn btn-theme btn-sm float-left" style="font-size:0.8em" v-on:click="toggle()">Leave Your Review <span class="badge badge-light">{{ current_user.total_reviews }}</span v-if="current_user" class="badge badge-light"></button></a>
+              <a href="#newReview" style="color:white"><button type="button" class="btn btn-theme btn-sm float-left" style="font-size:0.8em" v-on:click="toggle()">Leave Your Review <span class="badge badge-light">{{ current_user.total_reviews }}</span v-if="current_user" class="badge badge-light"></button></a>
               <span class="sr-only">Total reviews</span>
               <br>
               <br>
@@ -1064,7 +1042,7 @@
         </div>
       </div>
 
-      <!-- Create singleReview Page. It'll be hidden  -->
+      <!-- Create Review Page. It'll be hidden  -->
       <div class="hidden" id="newReview">
 
           <br>
@@ -1113,7 +1091,7 @@
 
      <div class="title">
       <span>See also:</span>
-    </div>    
+    </div>
 
         <div class="card-deck also">
           <div class="card">

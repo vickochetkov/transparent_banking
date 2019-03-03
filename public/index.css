@@ -110,9 +110,15 @@ img.avatar {
     width: 200px;
   }
 
+.big-img {
+    display:block;
+    width: 800px;
+    margin: 0 auto;
+  }
+
 .middle-img {
     display:block;
-    width: 600px;
+    width: 600px;    
   }
 
 li span {
